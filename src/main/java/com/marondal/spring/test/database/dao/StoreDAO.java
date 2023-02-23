@@ -8,7 +8,6 @@ import com.marondal.spring.test.database.model.Store;
 
 @Repository
 public interface StoreDAO {
-	
-	public List<Store>selectStoreList();
 
+	public List<Store>selectStoreList();
 }

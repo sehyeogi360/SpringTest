@@ -6,7 +6,7 @@
   
   <mapper namespace="com.marondal.spring.test.database.dao.StoreDAO">
   	
-  	<select id="selectUsedGoodsList" resultType="com.marondal.spring.test.database.model.Store">
+  	<select id="selectStoreList" resultType="com.marondal.spring.test.database.model.Store">
   		SELECT 
   			`id`
   			, `name`
