@@ -12,17 +12,17 @@ import com.marondal.spring.test.database.model.Store;
 
 
 
-@Controller
-public class StoreController {
+@Controller//컨트롤러 라는 뜻 컨트롤러면 리퀘스트 전달받아서 리스폰스로 전달해준다. 
+public class StoreController { 
 	
 	@Autowired
-	private StoreBO storeBO;
+	private StoreBO storeBO;//스토어 비오 객체 활용
 	
-	@RequestMapping("/database/test01")
-	@ResponseBody
-	public List<Store> test01() {
+	@RequestMapping("/database/test01")//urlmapping 컨트롤러는 무조건 bo를 통해서 기능 수행 
+	@ResponseBody //이거 붙여주고 해당하는 바디 형태 그대로 리턴
+	public List<Store> storeList() {//
 		
-		List<Store> storeList = storeBO.getStoreList();
+		List<Store> storeList = storeBO.getStoreList();//
 	
 		return storeList;
 	}

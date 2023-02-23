@@ -2,7 +2,7 @@ package com.marondal.spring.test.database.model;
 
 import java.util.Date;
 
-public class Store {
+public class Store {//데이터 저장을 위한 클래스: 모델
 	
 	
 	private int id;
@@ -13,7 +13,7 @@ public class Store {
 	private String introduce;
 	private Date createdAt;
 	private Date updatedAt;
-	public int getId() {
+	public int getId() {//데이터를 저장하고 다루기 위한 클래스 getter setter
 		return id;
 	}
 	public void setId(int id) {

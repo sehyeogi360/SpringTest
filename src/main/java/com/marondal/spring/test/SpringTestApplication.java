@@ -12,7 +12,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 @SpringBootApplication
-@MapperScan(basePackages="com.marondal.spring.test.*")
+@MapperScan(basePackages="com.marondal.spring.test.*")//이것도 복붙 하되 dao의 위치 적기 경로를 적어주기
 
 public class SpringTestApplication {
 
@@ -20,7 +20,7 @@ public class SpringTestApplication {
 		SpringApplication.run(SpringTestApplication.class, args);
 	}
 	
-	@Bean
+	@Bean//springExample 거 그대롤 복붙 임포트는 core.io
 	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
 		
 		SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();

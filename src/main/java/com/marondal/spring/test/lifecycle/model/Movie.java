@@ -1,6 +1,6 @@
 package com.marondal.spring.test.lifecycle.model;
 
-public class Movie {
+public class Movie {//데이터 저장을 위한 클래스: 모델
 
 	//세가지 타입 다 변수로 만들기
 	private String title;
