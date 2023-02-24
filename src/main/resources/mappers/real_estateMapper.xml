@@ -21,11 +21,58 @@
   			`real_estate`
   		WHERE
   			`id`=#{id}	
-  			`rentPrice` = #{rentPrice}
-  			`area` = #{area}
-  			`price` = #{price}
-  			
-  	
+
+  	</select>
+  	<select id="selectRealEstate2" resultType="com.marondal.spring.test.mybatis.model.RealEstate"
+  	parameterType="int">
+  		SELECT `id`,
+  			`realtorId`,
+  			`address`,
+  			`area`,
+  			`type`,
+  			`price`,
+  			`rentPrice`,
+  			`createdAt`,
+  			`updatedAt`
+  		FROM
+  			`real_estate`
+  		WHERE
+  			`rentPrice`=#{rentPrice}	
+
+  	</select>
+  	<select id="selectRealEstate3" resultType="com.marondal.spring.test.mybatis.model.RealEstate"
+  	parameterType="int">
+  		SELECT `id`,
+  			`realtorId`,
+  			`address`,
+  			`area`,
+  			`type`,
+  			`price`,
+  			`rentPrice`,
+  			`createdAt`,
+  			`updatedAt`
+  		FROM
+  			`real_estate`
+  		WHERE
+  			`area`=#{area}	
+
+  	</select>
+  	<select id="selectRealEstate4" resultType="com.marondal.spring.test.mybatis.model.RealEstate"
+  	parameterType="int">
+  		SELECT `id`,
+  			`realtorId`,
+  			`address`,
+  			`area`,
+  			`type`,
+  			`price`,
+  			`rentPrice`,
+  			`createdAt`,
+  			`updatedAt`
+  		FROM
+  			`real_estate`
+  		WHERE
+  			`price`=#{price}	
+
   	</select>
   
  

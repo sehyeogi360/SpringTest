@@ -17,13 +17,10 @@ public class RealEstateController {
 	private RealEstateBO realEstateBO; //비오객체가 있어야 전달하므로
 	
 	//전달 받은 id 와 일치하는 데이터 json으로 response 추가
-	@RequestMapping("/mybatis/test01")
+	@RequestMapping("/mybatis/test01/1")
 	@ResponseBody
 	public RealEstate realestate(
-			@RequestParam("id") int id,
-			@RequestParam(value="rentPrice", required=false) int rentPrice,
-			@RequestParam(value="area", required=false) int area,
-			@RequestParam(value="price", required=false) int price
+			@RequestParam("id") int id
 			
 			) //어떤 파라미터로 매칭할지? 리퀘스트 파람으로 정확히 매칭
 			//@RequestParam(value="id", defaultValue="3") int id) 
@@ -34,22 +31,38 @@ public class RealEstateController {
 		return realestate; //받은 객체를 그대로 리턴
 	}
 
-	
+	@RequestMapping("/mybatis/test01/2")
+	@ResponseBody
 	public RealEstate realestate2(
-			@RequestParam("id") int id,
-			@RequestParam(value="rentPrice", required=false) int rentPrice,
-			@RequestParam(value="area", required=false) int area,
-			@RequestParam(value="price", required=false) int price
-			
+			@RequestParam("rentprice") int rentprice
+
 			) //어떤 파라미터로 매칭할지? 리퀘스트 파람으로 정확히 매칭
 			//@RequestParam(value="id", defaultValue="3") int id) 
 		{
 		
-		RealEstate realestate = realEstateBO.getRealEstate(rentPrice);
+		RealEstate realestate2 = realEstateBO.getRealEstate(rentprice);
 		
-		return realestate; //받은 객체를 그대로 리턴
+		return realestate2; //받은 객체를 그대로 리턴
 	}
 	
+	@RequestMapping("/mybatis/test01/3")
+	@ResponseBody
+	public RealEstate realestate3(
+			@RequestParam("area") int area,
+			@RequestParam("price") int price
+			) //어떤 파라미터로 매칭할지? 리퀘스트 파람으로 정확히 매칭
+	//@RequestParam(value="id", defaultValue="3") int id) 
+	{
+		
+		RealEstate realestate3 = realEstateBO.getRealEstate(area);
+		
+		return realestate3; //받은 객체를 그대로 리턴
+	}
+	
+
+
+	
+
 	
 	
 	
