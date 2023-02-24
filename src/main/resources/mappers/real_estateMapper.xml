@@ -21,7 +21,10 @@
   			`real_estate`
   		WHERE
   			`id`=#{id}	
-  	
+  			`rentPrice` = #{rentPrice}
+  			`area` = #{area}
+  			`price` = #{price}
+  			
   	
   	</select>
   

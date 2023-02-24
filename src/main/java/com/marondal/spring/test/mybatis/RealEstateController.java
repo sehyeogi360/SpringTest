@@ -20,7 +20,12 @@ public class RealEstateController {
 	@RequestMapping("/mybatis/test01")
 	@ResponseBody
 	public RealEstate realestate(
-			@RequestParam("id") int id) //어떤 파라미터로 매칭할지? 리퀘스트 파람으로 정확히 매칭
+			@RequestParam("id") int id,
+			@RequestParam(value="rentPrice", required=false) int rentPrice,
+			@RequestParam(value="area", required=false) int area,
+			@RequestParam(value="price", required=false) int price
+			
+			) //어떤 파라미터로 매칭할지? 리퀘스트 파람으로 정확히 매칭
 			//@RequestParam(value="id", defaultValue="3") int id) 
 		{
 		
@@ -28,4 +33,25 @@ public class RealEstateController {
 		
 		return realestate; //받은 객체를 그대로 리턴
 	}
+
+	
+	public RealEstate realestate2(
+			@RequestParam("id") int id,
+			@RequestParam(value="rentPrice", required=false) int rentPrice,
+			@RequestParam(value="area", required=false) int area,
+			@RequestParam(value="price", required=false) int price
+			
+			) //어떤 파라미터로 매칭할지? 리퀘스트 파람으로 정확히 매칭
+			//@RequestParam(value="id", defaultValue="3") int id) 
+		{
+		
+		RealEstate realestate = realEstateBO.getRealEstate(rentPrice);
+		
+		return realestate; //받은 객체를 그대로 리턴
+	}
+	
+	
+	
+	
+	
 }

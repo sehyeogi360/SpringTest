@@ -20,4 +20,19 @@ public class RealEstateBO {
 	
 	
 	}
+	
+	public RealEstate getRealEstate2(int rentPrice) {//리턴타입 그대로 잡아준다. 아이디 전달하면 그에 대응하는 리얼에스테이트 객체로 전달
+		
+		RealEstate realestate = realEstateDAO.selectRealEstate(rentPrice);
+		
+		return realestate;
+		
+		
+
+	}
+	
+	
+	
+	
+	
 }
