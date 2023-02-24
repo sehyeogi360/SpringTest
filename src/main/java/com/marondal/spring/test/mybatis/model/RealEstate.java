@@ -8,7 +8,7 @@ public class RealEstate {
 	private int realtorId;
 	private String address;
 	private int area;
-	private char type;
+	private String type;
 	private int price;
 	private int rentPrice;
 	private Date createdAt;
@@ -37,10 +37,10 @@ public class RealEstate {
 	public void setArea(int area) {
 		this.area = area;
 	}
-	public char getType() {
+	public String getType() {
 		return type;
 	}
-	public void setType(char type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 	public int getPrice() {
