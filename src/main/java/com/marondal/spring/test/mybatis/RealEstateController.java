@@ -89,6 +89,20 @@ public class RealEstateController {
 		return "삽입결과 : " + count;
 	}//실행된 행의 개수
 	
+	
+	// id가 24 인 행의 type 을 전세로 바꾸고 price 를 70000으로 변경하세요.
+	// 수정 성공한 행의 수를 출력하세요.
+	@RequestMapping("/test03")
+	@ResponseBody
+	public String modifyRealEstate(@RequestParam("id") int id) {//id만 파라미터 받아오기.
+
+		int count = realEstateBO.modifyRealEstate(id, "전세", 70000);
+		
+		
+		return "수정 성공" + count;
+		
+	}
+	
 
 	
 	

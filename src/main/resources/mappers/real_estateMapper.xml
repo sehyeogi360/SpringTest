@@ -114,7 +114,14 @@
   		)
   	
   	</insert>
+  <!-- resultType 안되는이유? -->
+  <update id ="updateRealEstate" parameterType="int">
+  	UPDATE `real_estate`
+	SET `type` = #{type}, `price`= #{price}
+	WHERE `id`= #{id};
   
+  
+  </update>
   
  
   

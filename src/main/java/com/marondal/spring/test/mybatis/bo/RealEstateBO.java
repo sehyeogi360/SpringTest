@@ -51,6 +51,10 @@ public class RealEstateBO {
 	}
 
 
+	public int modifyRealEstate(int id, String type, int price) {
+		
+		return realEstateDAO.updateRealEstate(id, type, price);
+	}
 	
 	
 	
