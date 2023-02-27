@@ -51,13 +51,15 @@ public class RealEstateBO {
 	}
 
 
-	public int modifyRealEstate(int id, String type, int price) {
-		
-		return realEstateDAO.updateRealEstate(id, type, price);
+	public int modifyRealEstate(int id, String type, int price) {//내가만든기능에만 집중 자바문법에만 
+								
+		return realEstateDAO.updateRealEstate(id, type, price);//변경시킬 행의 id를 전달 받고, 전달받은 타입과 가격으로 수정한다. id, type, price 파라미터로
 	}
 	
 	
-	
-	
+	public int deleteRealEstate(int id) {//아이디 전달받고 행삭제하는기능 만들어라.
+		
+		return realEstateDAO.deleteRealEstate(id);	
+	}
 	
 }

@@ -114,13 +114,22 @@
   		)
   	
   	</insert>
-  <!-- resultType 안되는이유? -->
+  <!-- 메소드 이름 = id resultType은 int로 지정되어서 건드릴필요도없고 건드릴수도 없다함.-->
   <update id ="updateRealEstate" parameterType="map">
   	UPDATE `real_estate`
-	SET `type` = #{type}, `price`= #{price}
+	SET `type` = #{type}, 
+		`price`= #{price},
+		`updatedAt` = now() <!-- 수정시간도 넣기 -->
 	WHERE `id`= #{id};
   </update>
   
+  <delete id ="deleteRealEstate" parameterType="int"><!-- parameter은 int하나이므로-->
+  	DELETE FROM
+  		`real_estate`
+  	WHERE
+  		`id` = #{id}
+  
+  </delete>
  
   
   </mapper>

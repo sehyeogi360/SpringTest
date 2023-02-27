@@ -89,20 +89,26 @@ public class RealEstateController {
 		return "삽입결과 : " + count;
 	}//실행된 행의 개수
 	
-	
 	// id가 24 인 행의 type 을 전세로 바꾸고 price 를 70000으로 변경하세요.
 	// 수정 성공한 행의 수를 출력하세요.
 	@RequestMapping("/test03")
-	@ResponseBody
-	public String modifyRealEstate(@RequestParam("id") int id) {//id만 파라미터 받아오기.
-
-		int count = realEstateBO.modifyRealEstate(id, "전세", 70000);
+	@ResponseBody// return 타입은 천천히 생각하기 , id가 22인거?
+	public String modifyRealEstate() {
 		
+		int count = realEstateBO.modifyRealEstate(22, "전세", 70000);//@RequestParam("id") int id파라미터 없이 그냥 여기다가 값쓰면된다 함.
 		
-		return "수정 성공" + count;
+		return "수정 성공 : " + count;
 		
 	}
 	
+	@RequestMapping("/test04")//url겹치면 서버가 안켜짐
+	@ResponseBody
+	public String deleteRealEstate(@RequestParam("id") int id) {//실수로 이거 안한듯;;
+		int count = realEstateBO.deleteRealEstate(id);//삭제된 행의갯수리턴
+		
+		return "삭제 결과 : " + count; //기능수행은 비오
+		
+	}
 
 	
 	
