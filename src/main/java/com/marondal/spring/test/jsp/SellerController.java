@@ -47,7 +47,7 @@ public class SellerController {
 		
 		model.addAttribute("seller", lastSeller);
 		
-		return "jsp/lastSeller";
+		return "jsp/lastseller";
 
 	}
 
