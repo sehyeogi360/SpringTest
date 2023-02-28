@@ -31,6 +31,23 @@
   
   </insert>
   
+  <select id ="selectLastSeller" parameterType="map" resultType="com.marondal.spring.test.jsp.model.Seller">
+  	SELECT 
+			`id`,
+			`nickname`,
+  			`temperature`,
+  			`profileImage`,
+  			`createdAt`,
+  			`updatedAt`
+  	FROM 
+  		`new_user`
+  		
+	ORDER BY 
+		`id` DESC <!-- desc가장최근에 한게 제일 큰수 -->
+	LIMIT 
+		1
+  </select>
+  
   
   
   </mapper>

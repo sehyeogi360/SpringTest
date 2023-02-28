@@ -13,12 +13,12 @@ public class SellerBO {
 	private SellerDAO sellerDAO;
 	
 	public int addSeller(String nickname, double temperature, String profileImage) {
-		return sellerDAO.insertSeller(nickname, nickname, profileImage);
+		return sellerDAO.insertSeller(nickname, temperature, profileImage);
 		
 	}
 	
 	public Seller getLastSeller() {//최근 추가된 유저
-		return sellerDAO.selectLastUser();
+		return sellerDAO.selectLastSeller();
 		
 	}
 	

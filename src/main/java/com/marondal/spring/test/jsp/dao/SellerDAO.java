@@ -10,10 +10,10 @@ public interface SellerDAO {
 	
 	public int insertSeller(
 			@Param("nickname") String nickname,
-			@Param("temperature") String temperature,
+			@Param("temperature") double temperature,
 			@Param("profileImage") String profileImage
 
 			);
 
-	public Seller selectLastUser();
+	public Seller selectLastSeller();
 }
