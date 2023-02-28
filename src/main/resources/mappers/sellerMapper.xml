@@ -4,13 +4,13 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="com.marondal.spring.test.jsp.dao.SellerDAO">
+  <mapper namespace="com.marondal.spring.test.jsp.dao.SellerDAO"><!-- 다오 연결 ctrl 눌러서 링크 확인 -->
   
   <insert id="insertSeller" parameterType="map">
   	INSERT INTO
   			`seller`
   		(
-  			`nickname`,
+  			`nickname`, <!-- 쉼표 앞에다 하는게 실수 덜하다 함 본인스타일이긴한데 -->
   			`temperature`,
   			`profileImage`,
   			`createdAt`,
@@ -20,7 +20,7 @@
   		(
   			#{nickname},
   			#{temperature},
-  			#{profileImage},
+  			#{profileImage},<!-- 강사님은 이거를 profileUrl이라고 잡음 -->
   			now(),
   			now()
   		
@@ -44,6 +44,21 @@
 		`id` DESC <!-- desc가장최근에 한게 제일 큰수 -->
 	LIMIT 
 		1
+  </select>
+  
+  <select id="selectSeller" parameterType="int" resultType="com.marondal.spring.test.jsp.model.Seller">
+  	SELECT 
+			`id`,
+			`nickname`,
+  			`temperature`,
+  			`profileImage`,
+  			`createdAt`,
+  			`updatedAt`
+  	FROM 
+  		`seller`
+  	WHERE
+  		`id` = #{id}	
+  
   </select>
   
   

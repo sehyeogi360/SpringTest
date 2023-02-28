@@ -9,12 +9,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>seller 출력</title>
 </head>
 <body>
-	<h1>판매자 정보</h1>
-	<div><img width = 150 src="${seller.profileImage}"></div>
-	<div class="display-4">${seller.nickname}</div>
-	<div class="text-warning display-4">${seller.temperature}</div>
+	
+	<div class="container"><!-- conatiner 넣기 -->
+		
+		<h1>판매자 정보</h1>
+	
+		<div><img width = 200 src="${seller.profileImage}"></div>
+		<div class="display-3">${seller.nickname}</div><!-- EL태그 활용 .멤버변수 -->
+		<div class="text-warning display-4">${seller.temperature}</div><!-- 모델이라는곳에있는 데이터만 꺼내쓸수 있다는 사실 -->
+	
+	</div>
+	
+	
 </body>
 </html>

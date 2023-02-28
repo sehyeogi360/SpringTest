@@ -14,14 +14,22 @@
 </head>
 <body>
 
-<h1>판매자 추가</h1>
-<form method="post" action="/jsp/test01/add_seller">
 
-	<label>닉네임</label><input type="text" name="nickname" class="form-class"><br>
-	<label>프로필 사진 url</label><input type="text" name="profileImage" class="form-class"><br>
-	<label>온도</label><input type="text" name="temperature" class="form-class"><br>
+
+
+	<div class="container"><!-- 컨테이너 추가 -->
 	
-	<button type ="submit"class="btn btn-primary">추가</button>
+	<h1>판매자 추가</h1>
+	<form method="post" action="/jsp/test01/add_seller"><!-- form 태그안에 넣기 -->
+	
+		<label>닉네임</label><input type="text" class="form-control col-3" name="nickname"><br>
+		<label>프로필 사진 url</label><input type="text" class="form-control col-6" name="profileImage"><br>
+		<label>온도</label><input type="text" class="form-control col-3" name="temperature"><br>
+		
+		<button type ="submit"class="btn btn-primary">추가</button>
+	
+	</div>
+	
 </form>
 
 </body>
