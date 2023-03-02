@@ -15,7 +15,7 @@
 
 		<div class="contianer">
 			<h1>공인중개사 추가</h1>
-			<form method="post" action="/jsp/test02/add_realtor"><!-- get으로 변경 -->
+			<form method="get" action="/jsp/test02/add_realtor"><!-- get으로 변경 -->
 				<label>상호명</label><input type="text" class="form-control col-3" name="office"><!-- 역시나 이미 그 페이지에 정해진것 -->
 				<label>전화번호</label><input type="text" class="form-control col-3" name="phoneNumber">
 				<label>주소</label><input type="text" class="form-control col-3" name="address">

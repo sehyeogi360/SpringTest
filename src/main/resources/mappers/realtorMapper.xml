@@ -6,6 +6,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.marondal.spring.test.jsp.dao.RealtorDAO">
+<!--    
   	<insert id="insertRealtor" parameterType="map"
   	useGeneratedKeys="true" keyProperty = "id">
   	INSERT INTO
@@ -30,7 +31,7 @@
   	)
 
   	</insert>
-  	
+-->  	
   	<insert id="insertRealtorByObject" parameterType="com.marondal.spring.test.jsp.model.Realtor"
   	useGeneratedKeys="true" keyProperty = "id"><!-- 리턴 int 고정값이라서 파라미터 타입에 경로 넣는다. -->
   	INSERT INTO							<!-- 컬럼명 id를 위의객체에 id라는 값을 전달-->
@@ -75,7 +76,7 @@
   			`id` = #{id}	
  
   	</select>
-  
+ <!--  
   	<select id="selectLastRealtor" resultType="com.marondal.spring.test.jsp.model.Realtor">
   	
   		SELECT 
@@ -94,5 +95,5 @@
 		LIMIT 
 			1
   	</select>
-  
+-->  
   </mapper>

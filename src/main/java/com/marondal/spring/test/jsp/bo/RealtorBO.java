@@ -12,10 +12,10 @@ public class RealtorBO {
 	@Autowired
 	private RealtorDAO realtorDAO;//안전하게 객체관리하기위해서 사용
 
-	public int addRealtor(String office, String phoneNumber, String address, String grade) {
-		
-		return realtorDAO.insertRealtor(office, phoneNumber, address, grade);
-	}//위에거 필요없나봄
+//	public int addRealtor(String office, String phoneNumber, String address, String grade) {
+//		
+//		return realtorDAO.insertRealtor(office, phoneNumber, address, grade);
+//	}//위에거 필요없나봄
 	
 	public int addRealtorByObject(Realtor realtor) {
 		
@@ -28,10 +28,10 @@ public class RealtorBO {
 		return realtorDAO.selectRealtor();
 	}
 
-	public Realtor getLastRealtor() {
-		
-		return realtorDAO.selectLastRealtor();
-	}
+//	public Realtor getLastRealtor() {
+//		
+//		return realtorDAO.selectLastRealtor();
+//	}
 
 
 	

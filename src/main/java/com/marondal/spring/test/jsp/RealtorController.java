@@ -22,8 +22,8 @@ public class RealtorController {
 	@Autowired RealtorBO realtorBO;
 	
 	//@ModelAttribute이용해라 이글 무시하기
-	@PostMapping("/add_realtor") // 입력 action URL	(추가) 포스트할 이유가없으면 겟이라고 한다. 
-	public String getRealtor(//id는 테이블 인서트되면서 추가되는값이므로 없음
+	@GetMapping("/add_realtor") // 입력 action URL	(추가) 포스트할 이유가없으면 겟이라고 한다. 
+	public String addRealtor(//id는 테이블 인서트되면서 추가되는값이므로 없음
 //			@RequestParam(value="office", required=false) String office //이름, 전화번호, 주소, 등급 전달
 //			, @RequestParam(value="phoneNumber", required=false) String phoneNumber
 //			, @RequestParam(value="address", required=false ) String address //밸류값과 변수값이 반드시 일치할필요 업다(?)
@@ -45,19 +45,19 @@ public class RealtorController {
 		
 	}
 	
-	@GetMapping("/lastRealtor") // 최근에 저장된거 조회
-	public String lastRealtor(Model model) {
-		
-		Realtor lastRealtor = realtorBO.getLastRealtor();
-		
-		model.addAttribute("realtor", lastRealtor);
-		
-		return "jsp/lastrealtor";
-	}
-	
+//	@GetMapping("/lastRealtor") // 최근에 저장된거 조회
+//	public String lastRealtor(Model model) {
+//		
+//		Realtor lastRealtor = realtorBO.getLastRealtor();
+//		
+//		model.addAttribute("realtor", lastRealtor);
+//		
+//		return "jsp/lastrealtor";
+//	}
+//	
 	
 	@GetMapping("/1") //입력폼으로
-	public String addRealtor() {
+	public String realtorInput() {
 		return "jsp/realtorInput";
 	}
 	

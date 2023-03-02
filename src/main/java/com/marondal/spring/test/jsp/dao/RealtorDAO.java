@@ -10,19 +10,19 @@ import com.marondal.spring.test.jsp.model.Seller;
 public interface RealtorDAO {
 	
 
-	public int insertRealtor(
-			@Param("office") String office
-			, @Param("phoneNumber") String phoneNumber
-			, @Param("address") String address
-			, @Param("grade") String grade
-			
-			); //위에거 필요 없나봄..
+//	public int insertRealtor(
+//			@Param("office") String office
+//			, @Param("phoneNumber") String phoneNumber
+//			, @Param("address") String address
+//			, @Param("grade") String grade
+//			
+//			); //위에거 필요 없나봄..
 	
 	public int insertRealtorByObject(Realtor realtor);//인서트는 실행되는 행의 갯수
 	
 	public Realtor selectRealtor();
 	
-	public Realtor selectLastRealtor();
+//	public Realtor selectLastRealtor();
 		
 		
 
