@@ -27,6 +27,10 @@ public class RealtorBO {
 		return realtorDAO.selectRealtor();
 	}
 
+	public Realtor getLastRealtor() {
+		
+		return realtorDAO.selectLastRealtor();
+	}
 
 
 	

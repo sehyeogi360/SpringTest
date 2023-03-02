@@ -46,9 +46,9 @@ public class RealtorController {
 	@GetMapping("/lastRealtor") // 최근에 저장된거 조회
 	public String lastRealtor(Model model) {
 		
-		Realtor realtor = realtorBO.getRealtor();
+		Realtor lastRealtor = realtorBO.getLastRealtor();
 		
-		model.addAttribute("realtor", realtor);
+		model.addAttribute("realtor", lastRealtor);
 		
 		return "jsp/lastrealtor";
 		

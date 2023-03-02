@@ -76,5 +76,23 @@
  
   	</select>
   
+  	<select id="selectLastRealtor" resultType="com.marondal.spring.test.jsp.model.Realtor">
+  	
+  		SELECT 
+  				  `id`
+  				, `office`
+  				, `phoneNumber`
+  				, `address`
+  				, `grade`
+  				, `createdAt`
+  				, `updatedAt`
+  		
+  		FROM `realtor`
+
+		ORDER BY 
+			`id` DESC 
+		LIMIT 
+			1
+  	</select>
   
   </mapper>

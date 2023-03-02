@@ -3,6 +3,7 @@ package com.marondal.spring.test.jsp.dao;
 import org.apache.ibatis.annotations.Param;
 
 import com.marondal.spring.test.jsp.model.Realtor;
+import com.marondal.spring.test.jsp.model.Seller;
 
 public interface RealtorDAO {
 	
@@ -19,6 +20,7 @@ public interface RealtorDAO {
 	
 	public Realtor selectRealtor();
 	
+	public Realtor selectLastRealtor();
 		
 		
 
