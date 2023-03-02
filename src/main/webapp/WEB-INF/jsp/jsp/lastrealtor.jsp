@@ -24,9 +24,7 @@
 				<td>${realtor.id}</td>
 			</tr>
 		</thead>
-		<tbody>
-			
-				
+		<tbody>		
 			<tr>
 				<th>상호명</th>
 				<td>${realtor.office}</td>

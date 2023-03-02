@@ -21,7 +21,7 @@ public class RealtorController {
 	@Autowired RealtorBO realtorBO;
 	
 	//@ModelAttribute이용해라 이글 무시하기
-	@PostMapping("/add_realtor") // 입력 action URL	
+	@PostMapping("/add_realtor") // 입력 action URL	(추가)
 	public String getRealtor(
 			@RequestParam(value="office", required=false) String office
 			, @RequestParam(value="phoneNumber", required=false) String phoneNumber
@@ -37,13 +37,13 @@ public class RealtorController {
 		realtor.setGrade(grade);
 		
 		int count = realtorBO.addRealtorByObject(realtor);
-//		
-//		model.addAttribute("realtor", realtor);
+		
+		model.addAttribute("realtor", realtor);
 		
 		return "jsp/lastrealtor";
 	}
 	
-	@GetMapping("/lastRealtor")
+	@GetMapping("/lastRealtor") // 최근에 저장된거 조회
 	public String lastRealtor(Model model) {
 		
 		Realtor realtor = realtorBO.getRealtor();
