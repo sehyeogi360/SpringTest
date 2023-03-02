@@ -9,22 +9,53 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title> 공인중개사 추가</title>
+<title>공인중개사 정보</title>
 </head>
 <body>
 
-		<div class="contianer">
-			<h1>공인중개사 추가</h1>
-			<form method="get" action="/jsp/test02/add_realtor">
-				<label>상호명</label><input type="text" class="form-control col-3">
-				<label>전화번호</label><input type="text" class="form-control col-3">
-				<label>주소</label><input type="text" class="form-control col-3">
-				<label>등급</label><input type="text" class="form-control col-3">
-				<button type="submit" class="btn btn-primary">추가</button>
-			</form>
-			
-			
-		</div>
 
+	<div class="container">
+	<h1>공인중개사 정보</h1>
+	
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<td>${realtor.id}</td>
+			</tr>
+		</thead>
+		<tbody>
+			
+				
+			<tr>
+				<th>상호명</th>
+				<td>${realtor.office}</td>
+			</tr>
+			
+			<tr>
+				<th>전화 번호</th>
+				<td>${realtor.phoneNumber}</td>
+			</tr>
+			
+			<tr>
+				<th>주소</th>
+				<td>${realtor.address}</td>
+			</tr>
+			<tr>
+				<th>등급</th>
+				<td>${realtor.grade}</td>
+			</tr>
+			
+		</tbody>
+		
+		</table>
+	
+	</div>
+
+
+	
+	
+	
+	
 </body>
 </html>

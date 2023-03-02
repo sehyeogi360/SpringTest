@@ -12,10 +12,10 @@
   			`realtor`
   		(
   			
-  			,`office
+  			,`office`
   			,`phoneNumber`
   			,`address`
-  			,`grade
+  			,`grade`
   			,`createdAt`
   			,`updatedAt`
   		)
@@ -33,7 +33,13 @@
   	
   	<select id="selectRealtor" parameterType="map" resultType="com.marondal.spring.test.jsp.model.Realtor">
   	
-  		SELECT *
+  		SELECT `id`
+  				, `office`
+  				, `phoneNumber`
+  				, `address`
+  				, `grade`
+  				, `createdAt`
+  				, `updatedAt`
   		
   		FROM `realtor`
 

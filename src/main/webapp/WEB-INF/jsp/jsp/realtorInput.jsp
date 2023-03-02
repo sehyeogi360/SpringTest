@@ -9,54 +9,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공인중개사 정보</title>
+<title> 공인중개사 추가</title>
 </head>
 <body>
 
-
-	<div class="container">
-	<h1>공인중개사 정보</h1>
-	
-	<table class="table">
-		<thead>
-			<th>ID</th>
-			<tr>${realtor.id}</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<th>ID</th>
-				<td>ID</td>
-			</tr>
-				
-			<tr>
-				<th>상호명</th>
-				<td>ID</td>
-			</tr>
+		<div class="contianer">
+			<h1>공인중개사 추가</h1>
+			<form method="post" action="/jsp/test02/add_realtor">
+				<label>상호명</label><input type="text" class="form-control col-3" name="office">
+				<label>전화번호</label><input type="text" class="form-control col-3" name="phoneNumber">
+				<label>주소</label><input type="text" class="form-control col-3" name="address">
+				<label>등급</label><input type="text" class="form-control col-3" name="grade">
+				<button type="submit" class="btn btn-primary">추가</button>
+			</form>
 			
-			<tr>
-				<th>전화 번호</th>
-				<td>010-222-1111</td>
-			</tr>
 			
-			<tr>
-				<th>주소</th>
-				<td>서울시 서초구</td>
-			</tr>
-			<tr>
-				<th>등급</th>
-				<td>안심중개사</td>
-			</tr>
-			
-		</tbody>
-		
-		</table>
-	
-	</div>
+		</div>
 
-
-	
-	
-	
-	
 </body>
 </html>
