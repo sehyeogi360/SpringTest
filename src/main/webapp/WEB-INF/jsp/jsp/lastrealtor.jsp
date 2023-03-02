@@ -21,7 +21,7 @@
 		<thead>
 			<tr>
 				<th>ID</th>
-				<td>${realtor.id}</td>
+				<td>${realtor.id}</td><!-- el태그 모델에서 셋팅한 키값 딱 모델 다오까지만 생각하고 그이상 생각하지말것.-->
 			</tr>
 		</thead>
 		<tbody>		
