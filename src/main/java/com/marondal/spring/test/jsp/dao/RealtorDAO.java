@@ -15,6 +15,8 @@ public interface RealtorDAO {
 			
 			); 
 	
+	public int insertRealtorByObject(Realtor realtor);
+	
 	public Realtor selectRealtor();
 	
 		
