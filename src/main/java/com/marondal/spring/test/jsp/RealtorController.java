@@ -36,7 +36,7 @@ public class RealtorController {
 		realtor.setAddress(address);
 		realtor.setGrade(grade);
 		
-		int count = realtorBO.addRealtorByObject(realtor);
+		int count = realtorBO.addRealtorByObject(realtor);//이거 없으면 id 값이 0떠버리는데 그이유가??
 		
 		model.addAttribute("realtor", realtor);
 		
