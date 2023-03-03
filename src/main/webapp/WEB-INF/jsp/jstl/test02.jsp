@@ -27,8 +27,8 @@
 			</tr>
 		</thead>
 		<tbody>
-		
-		<c:forEach var="musicRanking" items="${musicRanking}" varStatus="status">
+						<!-- 노래 저장할 변수,     모델에 저장된 키값   varStatus = 반복과 과련된정보 전달 -->
+		<c:forEach var="musicRanking" items="${musicRanking}" varStatus="status"><!-- 반복한다? 볷 -->
 			<tr>
 				<td>${status.count}</td>
 				<td>${musicRanking}</td>

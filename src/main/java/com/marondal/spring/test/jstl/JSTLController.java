@@ -22,7 +22,7 @@ public class JSTLController {
 	}
 
 	@GetMapping("/test02")
-	public String test02(Model model) {
+	public String test02(Model model) {//해당 컨트롤러 안에 list두고 모델에 값들을 저장
 		
 		List<String> musicRanking = new ArrayList<>();
 		musicRanking.add("강남스타일");
@@ -31,7 +31,7 @@ public class JSTLController {
 		musicRanking.add("거짓말");
 		musicRanking.add("보고싶다");
 		
-		model.addAttribute("musicRanking", musicRanking);
+		model.addAttribute("musicRanking", musicRanking);// 키워드 , 객체
 		return "jstl/test02";
 	}
 	
@@ -75,11 +75,47 @@ public class JSTLController {
 		member.put("grade", "BASIC");
 		member.put("point", 420);
 		membership.add(member);
-		
-		model.addAttribute("membership", membership);
+							//memberList 로 해도됨 굳이 같지 않아도 된다는거
+		model.addAttribute("memberList", membership);//멤버가 아닌 모든 멤버정보가 들어간 리스트, 멤버쉽이 들어가는것.
 		
 		return "jstl/test02_1";
-		
+	}
+	
+		@GetMapping("/test03") 
+		public String test03(Model model) {
+			List<Integer> candidates = new ArrayList<>();
+			candidates.add(263001);
+			candidates.add(173942); 
+			candidates.add(563057); 
+			
+			model.addAttribute("candidateList", candidates);
+			
+			List<Map<String, Object>> cardBills = new ArrayList<>();
+
+			Map<String, Object> cardBill = new HashMap<>();
+			cardBill.put("store", "GS48");
+			cardBill.put("pay", 7800);
+			cardBill.put("date", "2025-09-14");
+			cardBill.put("installment", "일시불");
+			cardBills.add(cardBill);
+
+			cardBill = new HashMap<>();
+			cardBill.put("store", "현태백화점");
+			cardBill.put("pay", 2750000);
+			cardBill.put("date", "2025-09-18");
+			cardBill.put("installment", "3개월");
+			cardBills.add(cardBill);
+
+			cardBill = new HashMap<>();
+			cardBill.put("store", "요촌치킨");
+			cardBill.put("pay", 180000);
+			cardBill.put("date", "2025-09-20");
+			cardBill.put("installment", "일시불");
+			cardBills.add(cardBill);			
+			
+			model.addAttribute("cardBillList", cardBills);
+			
+			return "jstl/test03";
 		
 	}
 }

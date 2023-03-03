@@ -16,6 +16,18 @@
 <title>JSTL 응용하기</title>
 
 
+<style>
+.red = {
+	color:red;
+}
+.yellow = {
+	color:yellow;
+}
+.black = {
+	color:black;
+}
+
+</style>
 
 
 </head>
@@ -33,30 +45,43 @@
 					<th>포인트</th>
 				</tr>
 			</thead>			
-			<tbody>
-			<c:forEach var="membership" items="${membership}" varStatus="status">
-			
-				<c:if test="${membership.grade eq 'BASIC'}">
-					<c:set var="color" value="text-dark"></c:set>
-				</c:if>
-				<c:if test="${membership.grade eq 'GOLD'}">
-					<c:set var="color" value="text-warning"></c:set>
-				</c:if>
-				<c:if test="${membership.grade eq 'VIP'}">
-					<c:set var="color" value="text-danger"></c:set>
-				</c:if>
-				<c:if test="${membership.point >= 5000}">
-					<c:set var="color2" value="text-primary"></c:set>
-				</c:if>
-				<c:if test="${membership.point < 5000}">
-					<c:set var="color2" value="text-dark"></c:set>
-				</c:if>
+			<tbody>							<!-- 실제 리스트데이터 -->			
+			<c:forEach var="member" items="${memberList}" varStatus="status">
+				<!-- 변수사용 없이, if else문 형식으로 구성해보기 -->
+				
+				<c:choose>
+					
+					<c:when test="${member.grade eq 'GOLD'}">
+						<c:set var="color" value="text-warning"></c:set> 
+						<!-- <td class="text-danger> ${member.grade} </td>-->
+					</c:when>
+					<c:when test="${member.grade eq 'VIP'}">
+						<c:set var="color" value="text-danger"></c:set>
+						<!-- <td class="text-danger> ${member.grade} </td>-->
+					</c:when>
+					<c:otherwise>
+						<c:set var="color" value="text-dark"></c:set>
+						<!-- <td class="text-danger> ${member.grade} </td>-->
+					</c:otherwise>
+						
+				</c:choose>
+				
+				<c:choose>
+					<c:when test="${member.point >= 5000}">
+						<c:set var="color2" value="text-primary"></c:set>
+						<!-- <td class="text-danger> ${member.grade} </td>-->
+					</c:when>
+					<c:otherwise>
+						<c:set var="color2" value="text-dark"></c:set>		
+						<!-- <td class="text-danger> ${member.grade} </td>-->				
+					</c:otherwise>
+				</c:choose>
 					
 				<tr>
-					<td>${membership.name }</td>
-					<td>${membership.phoneNumber }</td>
-					<td class="${color}">${membership.grade }</td>
-					<td class="${color2}">${membership.point }P</td>
+					<td>${member.name }</td>
+					<td>${member.phoneNumber }</td>
+					<td class="${color}">${member.grade }</td><!--${color}  -->
+					<td class="${color2}">${member.point }P</td><!--${color}  -->
 				</tr>
 			</c:forEach>
 			
