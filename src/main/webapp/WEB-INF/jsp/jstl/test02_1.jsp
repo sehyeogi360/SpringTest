@@ -14,6 +14,10 @@
 <head>
 <meta charset="UTF-8">
 <title>JSTL 응용하기</title>
+
+
+
+
 </head>
 <body>
 
@@ -32,21 +36,27 @@
 			<tbody>
 			<c:forEach var="membership" items="${membership}" varStatus="status">
 			
-				<c:if test="${membership.grade eq GOLD}">
-					<td class="text-warning"></td>
+				<c:if test="${membership.grade eq 'BASIC'}">
+					<c:set var="color" value="text-dark"></c:set>
 				</c:if>
-				<c:if test="${membership.grade eq VIP}">
-					<td class="text-danger"></td>
+				<c:if test="${membership.grade eq 'GOLD'}">
+					<c:set var="color" value="text-warning"></c:set>
+				</c:if>
+				<c:if test="${membership.grade eq 'VIP'}">
+					<c:set var="color" value="text-danger"></c:set>
 				</c:if>
 				<c:if test="${membership.point >= 5000}">
-					<td class="text-primary"></td>
+					<c:set var="color2" value="text-primary"></c:set>
+				</c:if>
+				<c:if test="${membership.point < 5000}">
+					<c:set var="color2" value="text-dark"></c:set>
 				</c:if>
 					
 				<tr>
 					<td>${membership.name }</td>
 					<td>${membership.phoneNumber }</td>
-					<td class="">${membership.grade }</td>
-					<td class="">${membership.point }P</td>
+					<td class="${color}">${membership.grade }</td>
+					<td class="${color2}">${membership.point }P</td>
 				</tr>
 			</c:forEach>
 			
