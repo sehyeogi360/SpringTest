@@ -48,41 +48,50 @@
 			<tbody>							<!-- 실제 리스트데이터 -->			
 			<c:forEach var="member" items="${memberList}" varStatus="status">
 				<!-- 변수사용 없이, if else문 형식으로 구성해보기 -->
+				<tr>
 				
+					<td>${member.name }</td>
+					<td>${member.phoneNumber }</td>
 				<c:choose>
 					
 					<c:when test="${member.grade eq 'GOLD'}">
-						<c:set var="color" value="text-warning"></c:set> 
-						<!-- <td class="text-danger> ${member.grade} </td>-->
+						<!--<c:set var="color" value="text-warning"></c:set> -->
+						 <td class="text-warning"> ${member.grade} </td>
 					</c:when>
 					<c:when test="${member.grade eq 'VIP'}">
-						<c:set var="color" value="text-danger"></c:set>
-						<!-- <td class="text-danger> ${member.grade} </td>-->
+						<!-- <c:set var="color" value="text-danger"></c:set> -->
+						<td class="text-danger"> ${member.grade} </td>
 					</c:when>
 					<c:otherwise>
-						<c:set var="color" value="text-dark"></c:set>
-						<!-- <td class="text-danger> ${member.grade} </td>-->
+						<!-- <c:set var="color" value="text-dark"></c:set> -->
+						 <td class="text-dark"> ${member.grade} </td>
 					</c:otherwise>
 						
 				</c:choose>
 				
 				<c:choose>
 					<c:when test="${member.point >= 5000}">
-						<c:set var="color2" value="text-primary"></c:set>
-						<!-- <td class="text-danger> ${member.grade} </td>-->
+						<!--<c:set var="color2" value="text-primary"></c:set>-->
+						 <td class="text-primary"> ${member.point}P </td>
 					</c:when>
 					<c:otherwise>
-						<c:set var="color2" value="text-dark"></c:set>		
-						<!-- <td class="text-danger> ${member.grade} </td>-->				
+						<!--<c:set var="color2" value="text-dark"></c:set>-->	
+						 <td class="text-dark"> ${member.point}P </td>				
 					</c:otherwise>
 				</c:choose>
+				
+				</tr>
+				
+				<!--  
 					
 				<tr>
 					<td>${member.name }</td>
 					<td>${member.phoneNumber }</td>
-					<td class="${color}">${member.grade }</td><!--${color}  -->
-					<td class="${color2}">${member.point }P</td><!--${color}  -->
+					<td class="${color}">${member.grade }</td>
+					<td class="${color2}">${member.point }P</td>
 				</tr>
+			-->
+				
 			</c:forEach>
 			
 			
