@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+
+#wrap{
+	
+	width:1200px;
+
+	
+	margin:auto;
+}
+
+.header{
+	
+	height:100px;
+}
+
+.sidebar{
+	height:600px;
+	
+}
+
+
+.article{
+	height:600px;
+	
+}
+
+.footer{
+	height:200px;
+}

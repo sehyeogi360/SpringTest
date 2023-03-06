@@ -16,18 +16,7 @@
 <title>JSTL 응용하기</title>
 
 
-<style>
-.red = {
-	color:red;
-}
-.yellow = {
-	color:yellow;
-}
-.black = {
-	color:black;
-}
 
-</style>
 
 
 </head>

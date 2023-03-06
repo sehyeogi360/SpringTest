@@ -56,11 +56,13 @@
 			</thead>
 			<tbody>								<!-- 모델에 저장한 값 그때 명시한 키 이름 -->
 				<c:forEach var="cardBills" items="${cardBillList }"  varStatus="status">
+				<%--String -> Date -> String --%>
+				<%--parseDate 사용하기 value 어떤 문자열을 데이트 객체로 만들지 cardBills.date 이미만든 형태를 pattern에 넣기--%>
+				<fmt:parseDate value="${cardBills.date }" pattern="yyyy-MM-dd" var="date" />
 				<tr>
 					<td>${cardBills.store }</td>			
-					<td><fmt:formatNumber value="${cardBills.pay }" type="currency" /></td>	
-					<fmt:parseDate value="${cardBills.date }" pattern="yyyy-MM-dd" var="date" />
-					<td><fmt:formatDate value="${date }" pattern="yyyy년 MM월 dd일" /></td>
+					<td><fmt:formatNumber value="${cardBills.pay }" type="currency" /></td>	<!-- fmt formatNumber 써주기 통화:currency-->					
+					<td><fmt:formatDate value="${date }" pattern="yyyy년 MM월 dd일" /></td><!-- 하나만 써주면 500 error -->
 					<td>${cardBills.installment }</td>
 				</tr>
 				</c:forEach>
