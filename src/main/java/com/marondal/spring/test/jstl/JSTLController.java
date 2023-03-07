@@ -185,9 +185,9 @@ public class JSTLController {
 			return "jstl/test05";
 		}
 		
-		@GetMapping("/test05input")
-		public String test05input(Model model) {
-			return "jstl/test05input";
+		@GetMapping("/test05_input")
+		public String test05_input(Model model) {
+			return "jstl/test05_input";
 			
 		}
 		
