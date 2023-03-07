@@ -184,4 +184,11 @@ public class JSTLController {
 		public String test05(Model model) {
 			return "jstl/test05";
 		}
+		
+		@GetMapping("/test05input")
+		public String test05input(Model model) {
+			return "jstl/test05input";
+			
+		}
+		
 }

@@ -54,7 +54,7 @@
 	
 				
 				<td>${fn:substring(member.introduce, 0, 15)}
-					<c:if test="${fn:length(membe.introduce) > 15 }"><!-- 15가 넘을시 자르기  -->
+					<c:if test="${fn:length(member.introduce) > 15 }"><!-- 15가 넘을시 자르기  -->
 						...
 					</c:if>
 				</td><!-- 자기소개 자르기 -->	

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>        
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
-    
+        
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,87 +25,25 @@
 			
 		
 		</header>
-		<!-- 화면구성까지만 과제로 해오기 -->
 		<section class="d-flex">
 			<aside class="sidebar bg-primary col-2">
 				<img width=150 src="https://blog.kakaocdn.net/dn/TxmeD/btqCKArBvPm/2tzfJfINwg0WWmCzC4jKW0/img.jpg">
 				
 				<ul class="mt-3">
 					<li class="nav"><a class="text-white" href="#">날씨</a></li>
-					<li class="nav"><a class="text-white" href="/jstl/test05_input.jsp">날씨입력</a></li>
+					<li class="nav"><a class="text-white" href="/jstl/test05_input">날씨입력</a></li>
 					<li class="nav"><a class="text-white" href="#">테마날씨</a></li>
 					<li class="nav"><a class="text-white" href="#">관측기후</a></li>
 				</ul>
 			</aside>
 			<article class="article  col-10">
-				<h1>과거날씨</h1>
-				<table class="table">
+				<h1>날씨 입력</h1>
 				
-					<thead>
-					<tr>
-						<th>날짜</th>
-						<th>날씨</th>
-						<th>기온</th>
-						<th>강수량</th>
-						<th>미세먼지</th>
-						<th>풍속</th>
-					</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>2021년 3월 5일</td>
-							<td><img src="http://marondal.com/material/images/dulumary/web/jstl/sunny.jpg"></td>
-							<td>15도</td>
-							<td>0mm</td>
-							<td>나쁨</td>
-							<td>1.2km/h</td>
-						</tr>
-						<tr>
-							<td>2021년 3월 5일</td>
-							<td><img src="http://marondal.com/material/images/dulumary/web/jstl/rainy.jpg"></td>
-							<td>15도</td>
-							<td>0mm</td>
-							<td>나쁨</td>
-							<td>1.2km/h</td>
-						</tr>
-						<tr>
-							<td>2021년 3월 5일</td>
-							<td><img src="http://marondal.com/material/images/dulumary/web/jstl/partlyCloudy.jpg"></td>
-							<td>15도</td>
-							<td>0mm</td>
-							<td>나쁨</td>
-							<td>1.2km/h</td>
-						</tr>
-						<tr>
-							<td>2021년 3월 5일</td>
-							<td><img src="http://marondal.com/material/images/dulumary/web/jstl/sunny.jpg"></td>
-							<td>15도</td>
-							<td>0mm</td>
-							<td>나쁨</td>
-							<td>1.2km/h</td>
-						</tr>
-						<tr>
-							<td>2021년 3월 5일</td>
-							<td></td>
-							<td>15도</td>
-							<td>0mm</td>
-							<td>나쁨</td>
-							<td>1.2km/h</td>
-						</tr>
-						<tr>
-							<td>2021년 3월 5일</td>
-							<td></td>
-							<td>15도</td>
-							<td>0mm</td>
-							<td>나쁨</td>
-							<td>1.2km/h</td>
-						</tr>
-					</tbody>
-				</table>
-			
+				
 			</article>
+		
 		</section>
-	
+		
 		<footer class=" d-flex">
 			<div class="col-2">
 				<img width = 150 src="https://blog.kakaocdn.net/dn/TxmeD/btqCKArBvPm/2tzfJfINwg0WWmCzC4jKW0/img.jpg">
@@ -116,11 +54,6 @@
 			</div>
 		
 		</footer>
-	
-	
 	</div>
-
-	
-
 </body>
 </html>
