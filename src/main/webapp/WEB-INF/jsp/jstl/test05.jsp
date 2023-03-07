@@ -31,7 +31,7 @@
 				<img width=150 src="https://blog.kakaocdn.net/dn/TxmeD/btqCKArBvPm/2tzfJfINwg0WWmCzC4jKW0/img.jpg">
 				
 				<ul class="nav flex-column mt-3">
-					<li class="nav-item"><a class="nav-link text-white" href="#">날씨</a></li>
+					<li class="nav-item"><a class="nav-link text-white" href="/jstl/test05">날씨</a></li>
 					<li class="nav-item"><a class="nav-link text-white" href="/jstl/test05_input">날씨입력</a></li>
 					<li class="nav-item"><a class="nav-link text-white" href="#">테마날씨</a></li>
 					<li class="nav-item"><a class="nav-link text-white" href="#">관측기후</a></li>
@@ -70,7 +70,7 @@
 							<c:when test="${fn:contains(weather.weather, '흐림' )}">
 							<td><img src ="http://marondal.com/material/images/dulumary/web/jstl/cloudy.jpg"></td>
 							</c:when>
-							<c:otherwise><!-- 010으로 시작안할시 -->
+							<c:otherwise>
 								<td>${weather.weather }</td>
 							</c:otherwise>
 						</c:choose>

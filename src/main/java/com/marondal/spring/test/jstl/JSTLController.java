@@ -1,20 +1,20 @@
 package com.marondal.spring.test.jstl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.marondal.spring.test.jsp.model.Seller;
 import com.marondal.spring.test.jstl.bo.WeatherHistoryBO;
 import com.marondal.spring.test.jstl.model.Member;
 import com.marondal.spring.test.jstl.model.WeatherHistory;
@@ -209,21 +209,19 @@ public class JSTLController {
 		
 		@GetMapping("/add")//전달이 안될만큼 많지도 않아서 겟
 		@ResponseBody//무엇을리턴할지에 따라 붙이고 말고 함 있는거는 데이터 자체 리턴 없는거는 경로리턴
-		public String addWeatherHistoryByObject(
-				//@DateTimeFormat(pattern="yyyy년 MM월 dd일") 이라는 거 활용 마치 parseDate와유사
-//				@RequestParam("date") Date date
-//				, @RequestParam("weather") String weather
-//				, @RequestParam("temperatures") double temperatures //파라미터와 변수가 굳이 같을 이유는 없다.
-//				, @RequestParam("preciptation") double preciptation
-//				, @RequestParam("microDust") String microDust
-//				, @RequestParam("windSpeed") double windSpeed
-				@ModelAttribute WeatherHistory weatherhistory
+		public String addWeatherHistory(
+				@DateTimeFormat(pattern="yyyy년 MM월 dd일") //이라는 거 활용 마치 parseDate와유사
+				@RequestParam("date") Date date
+				, @RequestParam("weather") String weather
+				, @RequestParam("temperatures") double temperatures //파라미터와 변수가 굳이 같을 이유는 없다.
+				, @RequestParam("preciptation") double preciptation
+				, @RequestParam("microDust") String microDust
+				, @RequestParam("windSpeed") double windSpeed
+//				@ModelAttribute WeatherHistory weatherhistory
 				, Model model) {
 			
-			int count = weatherHistoryBO.addWeatherHistoryByObject(weatherhistory);
-			
-			model.addAttribute("WeatherHistory", weatherhistory);
-			
+			int count = weatherHistoryBO.addWeatherHistory(date, weather, temperatures, preciptation, microDust, windSpeed);
+
 			return "삽입결과 : " + count;
 		}
 		

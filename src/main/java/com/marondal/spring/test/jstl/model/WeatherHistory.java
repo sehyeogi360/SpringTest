@@ -67,6 +67,8 @@ public class WeatherHistory {
 		this.updatedAt = updatedAt;
 	}
 
-
+	
+	
+	
 	
 }
