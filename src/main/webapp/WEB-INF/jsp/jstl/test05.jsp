@@ -21,7 +21,7 @@
 
 	<div id="wrap" class="">
 	
-		<header class="bg-info">
+		<header class="bg-info"><!-- header 없애도 됨. -->
 			
 		
 		</header>
@@ -30,11 +30,11 @@
 			<aside class="sidebar bg-primary col-2">
 				<img width=150 src="https://blog.kakaocdn.net/dn/TxmeD/btqCKArBvPm/2tzfJfINwg0WWmCzC4jKW0/img.jpg">
 				
-				<ul class="mt-3">
-					<li class="nav"><a class="text-white" href="#">날씨</a></li>
-					<li class="nav"><a class="text-white" href="/jstl/test05_input.jsp">날씨입력</a></li>
-					<li class="nav"><a class="text-white" href="#">테마날씨</a></li>
-					<li class="nav"><a class="text-white" href="#">관측기후</a></li>
+				<ul class="nav flex-column mt-3">
+					<li class="nav-item"><a class="nav-link text-white" href="#">날씨</a></li>
+					<li class="nav-item"><a class="nav-link text-white" href="/jstl/test05_input">날씨입력</a></li>
+					<li class="nav-item"><a class="nav-link text-white" href="#">테마날씨</a></li>
+					<li class="nav-item"><a class="nav-link text-white" href="#">관측기후</a></li>
 				</ul>
 			</aside>
 			<article class="article  col-10">
@@ -52,54 +52,34 @@
 					</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>2021년 3월 5일</td>
-							<td><img src="http://marondal.com/material/images/dulumary/web/jstl/sunny.jpg"></td>
-							<td>15도</td>
-							<td>0mm</td>
-							<td>나쁨</td>
-							<td>1.2km/h</td>
+					
+					<c:forEach var="weather" items ="${weatherhistoryList }">
+						<tr><!-- 날씨 모델만 참고해서 모델에있는값을 적기 쿼리 말고 -->
+							<td>${weather.date }</td>
+							
+						<c:choose>	
+							<c:when test="${fn:contains(weather.weather, '비' )}">
+							<td><img src ="http://marondal.com/material/images/dulumary/web/jstl/rainy.jpg"></td>
+							</c:when>
+							<c:when test="${fn:contains(weather.weather, '구름조금' )}">
+							<td><img src ="http://marondal.com/material/images/dulumary/web/jstl/partlyCloudy.jpg"></td>
+							</c:when>
+							<c:when test="${fn:contains(weather.weather, '맑음' )}">
+							<td><img src ="http://marondal.com/material/images/dulumary/web/jstl/sunny.jpg"></td>
+							</c:when>
+							<c:when test="${fn:contains(weather.weather, '흐림' )}">
+							<td><img src ="http://marondal.com/material/images/dulumary/web/jstl/cloudy.jpg"></td>
+							</c:when>
+							<c:otherwise><!-- 010으로 시작안할시 -->
+								<td>${weather.weather }</td>
+							</c:otherwise>
+						</c:choose>
+							<td>${weather.temperatures }℃</td>
+							<td>${weather.precipitation }mm</td>
+							<td>${weather.microDust }</td>
+							<td>${weather.windSpeed }km/h</td>
 						</tr>
-						<tr>
-							<td>2021년 3월 5일</td>
-							<td><img src="http://marondal.com/material/images/dulumary/web/jstl/rainy.jpg"></td>
-							<td>15도</td>
-							<td>0mm</td>
-							<td>나쁨</td>
-							<td>1.2km/h</td>
-						</tr>
-						<tr>
-							<td>2021년 3월 5일</td>
-							<td><img src="http://marondal.com/material/images/dulumary/web/jstl/partlyCloudy.jpg"></td>
-							<td>15도</td>
-							<td>0mm</td>
-							<td>나쁨</td>
-							<td>1.2km/h</td>
-						</tr>
-						<tr>
-							<td>2021년 3월 5일</td>
-							<td><img src="http://marondal.com/material/images/dulumary/web/jstl/sunny.jpg"></td>
-							<td>15도</td>
-							<td>0mm</td>
-							<td>나쁨</td>
-							<td>1.2km/h</td>
-						</tr>
-						<tr>
-							<td>2021년 3월 5일</td>
-							<td></td>
-							<td>15도</td>
-							<td>0mm</td>
-							<td>나쁨</td>
-							<td>1.2km/h</td>
-						</tr>
-						<tr>
-							<td>2021년 3월 5일</td>
-							<td></td>
-							<td>15도</td>
-							<td>0mm</td>
-							<td>나쁨</td>
-							<td>1.2km/h</td>
-						</tr>
+					</c:forEach>	
 					</tbody>
 				</table>
 			

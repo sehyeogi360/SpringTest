@@ -29,29 +29,29 @@
 			<aside class="sidebar bg-primary col-2">
 				<img width=150 src="https://blog.kakaocdn.net/dn/TxmeD/btqCKArBvPm/2tzfJfINwg0WWmCzC4jKW0/img.jpg">
 				
-				<ul class="mt-3">
-					<li class="nav"><a class="text-white" href="#">날씨</a></li>
-					<li class="nav"><a class="text-white" href="/jstl/test05_input">날씨입력</a></li>
-					<li class="nav"><a class="text-white" href="#">테마날씨</a></li>
-					<li class="nav"><a class="text-white" href="#">관측기후</a></li>
+				<ul class="nav flex-column mt-3">
+					<li class="nav-item"><a class="nav-link text-white" href="#">날씨</a></li>
+					<li class="nav-item"><a class="nav-link text-white" href="/jstl/test05_input">날씨입력</a></li>
+					<li class="nav-item"><a class="nav-link text-white" href="#">테마날씨</a></li>
+					<li class="nav-item"><a class="nav-link text-white" href="#">관측기후</a></li>
 				</ul>
 			</aside>
 			<article class="article  col-10">
 				<h1>날씨 입력</h1>
+													
+				<form method="get" action="/jstl/add"><!-- 애드페이지로 이동시키기 이거 구현해보기 -->
 				
-				<form method="get" action="/jsp/test05/">
-				
-				<div class="d-flex">
-				
-					<label>날짜</label><input type="text" class="form-control col-3" name="date">
-					<label>날씨</label>
-					<select class="form-control col-3" name="weather">
+				<div class="d-flex mt-5">
+					<!-- 날짜도 데이트피커 활용해보기 -->
+					<label class="ml-3">날짜</label><input type="text" class="form-control col-3" name="date">
+					<label class="ml-3">날씨</label>
+					<select id = "date" class="form-control col-3" name="weather">
 						<option>맑음</option>
 						<option>구름조금</option>
 						<option>흐림</option>
 						<option>비</option>
 					</select> 
-					<label>미세먼지</label>
+					<label class="ml-3">미세먼지</label>
 					<select class="form-control col-3" name="microDust">
 						<option>좋음</option>
 						<option>보통</option>
@@ -61,36 +61,35 @@
 				</div>
 				
 				
-				<div class="d-flex mt-3">
+				<div class="d-flex mt-5">
 				
-					<label>기온</label>
-					
+					<label class="ml-4">기온</label>					
 					  <input type="text" class="form-control col-3" name="temperatures" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
 					  <div class="input-group-append">
-					    <span class="input-group-text" id="basic-addon2">C</span>
+					    <span class="input-group-text" id="basic-addon2">℃</span>
 					  </div>
 					
 					
-					<label>강수량</label>
-						
+					<label class="ml-5">강수량</label>						
 						<input type="text" class="form-control col-3" name="precipitation" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
 					  	<div class="input-group-append">
 					    <span class="input-group-text" id="basic-addon2">mm</span>
 					  </div>					
 					
 					
-					<label>풍속</label>		
-				
+					<label class="ml-5">풍속</label>						
 						<input type="text" class="form-control col-3" name="windSpeed" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
 					  	<div class="input-group-append">
 					    <span class="input-group-text" id="basic-addon2">km/h</span>
 					  </div>
+	
+				</div>
 				
-				
+				<div class="d-flex justify-content : flex-end">
+					<button type="submit" class="btn btn-success mt-3 ">저장</button>
 				</div>
 				
 				
-				<button type="submit" class="btn btn-success">저장</button>
 			</form>
 				
 			</article>
@@ -108,5 +107,13 @@
 		
 		</footer>
 	</div>
+	<script>
+		$(#date)({
+			
+		});
+	
+	
+	</script>
+	
 </body>
 </html>
