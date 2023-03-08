@@ -16,7 +16,7 @@
 
 .sidebar{
 	height:600px;
-	
+	background-color:cornflowerblue;
 }
 
 /*
@@ -25,7 +25,9 @@
 	
 }
 */
-
+.input-lable {
+        		width:120px;
+}
 .footer{
 	height:100px;
 }

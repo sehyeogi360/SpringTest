@@ -27,7 +27,7 @@
 		</header>
 		<!-- 화면구성까지만 과제로 해오기 -->
 		<section class="d-flex">
-			<aside class="sidebar bg-primary col-2">
+			<aside class="sidebar col-2">
 				<img width=150 src="https://blog.kakaocdn.net/dn/TxmeD/btqCKArBvPm/2tzfJfINwg0WWmCzC4jKW0/img.jpg">
 				
 				<ul class="nav flex-column mt-3">
