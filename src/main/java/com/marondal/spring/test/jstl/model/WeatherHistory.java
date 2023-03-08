@@ -2,8 +2,11 @@ package com.marondal.spring.test.jstl.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class WeatherHistory {
 	private int id;
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date date;
 	private String weather;
 	private double temperatures;
