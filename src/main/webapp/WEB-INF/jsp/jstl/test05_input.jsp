@@ -88,13 +88,13 @@
 	                            </div>
 	                        </div>
 	                    </div>
-	                    <div class="d-flex align-items-center">
-	                        <label class="col-4">강수량</label> 
-	                        <div class="input-group">
+	                    <div class="d-flex align-items-center">	
+	                    	<label class="col-4">강수량</label>                         
+	                        <div class="input-group">	                       
 	                            <input type="text" class="form-control" name="precipitation">
-	                                <div class="input-group-append">
+	                                <div class="input-group-append"><!-- 강수량 오류 여기를 자세히 잘봐볼것. -->
 	                                    <span class="input-group-text">mm</span>
-	                            </div>
+	                            	</div>
 	                        </div>
 	                    </div>
 	                    

@@ -198,7 +198,7 @@ public class JSTLController {
 			//개별적으로 컨트롤러 만들필요없이 여기서 작업
 			//bo 호출하기 
 			//조회해 오기
-			List<WeatherHistory> weatherhistory = weatherHistoryBO.getWeatherhistory(); ;
+			List<WeatherHistory> weatherhistory = weatherHistoryBO.getWeatherhistory();//컨트롤러에게 직접 가져올수 없어서 비오를 시켜서 가져옴
 			//위에거랑 무슨차이냐? 주어진 데이터냐 내가 조회한 데이터냐 그차이 
 			model.addAttribute("weatherhistoryList", weatherhistory);
 			
@@ -214,8 +214,8 @@ public class JSTLController {
 		@ResponseBody//무엇을리턴할지에 따라 붙이고 말고 함 있는거는 데이터 자체 리턴 없는거는 경로리턴
 		public String addWeatherHistory(
 				 //이라는 거 활용 마치 parseDate와유사
-				
-				@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") @RequestParam("date")  Date date
+				@DateTimeFormat(pattern="yyyy년 MM월 dd일")//이것도 패턴 변경
+				 @RequestParam("date")  Date date
 				, @RequestParam("weather") String weather
 				, @RequestParam("temperatures") double temperatures //파라미터와 변수가 굳이 같을 이유는 없다.
 				, @RequestParam("preciptation") double preciptation
@@ -225,7 +225,7 @@ public class JSTLController {
 			
 			int count = weatherHistoryBO.addWeatherHistory(date, weather, temperatures, preciptation, microDust, windSpeed);
 
-			return "삽입결과 : " + count;
+			return "redirect:/jstl/test05";//삽입후 바로 리스트 창으로
 		}
 		
 		

@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>        
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
-    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>     
+    <!-- fmt추가 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,24 +54,24 @@
 					</thead>
 					<tbody>
 					
-					<c:forEach var="weather" items ="${weatherhistoryList }">
+					<c:forEach var="weather" items ="${weatherhistoryList }"><!-- 실제 모델의 리스트 데이터 컨트롤러서 셋팅한 키값 -->
 						<tr><!-- 날씨 모델만 참고해서 모델에있는값을 적기 쿼리 말고 -->
-							<td>${weather.date }</td>
+							<td><fmt:formatDate value= "${weather.date }" pattern="yyyy년 M월 d일"/></td><!-- 날짜 date객체이므로 string으로 알고보니 여기만 하면되는거였음 -->
 							
 						<c:choose>	
-							<c:when test="${fn:contains(weather.weather, '비' )}">
-							<td><img src ="http://marondal.com/material/images/dulumary/web/jstl/rainy.jpg"></td>
+							<c:when test="${weather.weather eq '비' }"><!-- eq로 해보기 -->
+								<td><img src ="http://marondal.com/material/images/dulumary/web/jstl/rainy.jpg"></td>
 							</c:when>
-							<c:when test="${fn:contains(weather.weather, '구름조금' )}">
-							<td><img src ="http://marondal.com/material/images/dulumary/web/jstl/partlyCloudy.jpg"></td>
+							<c:when test="${weather.weather eq '구름조금' }">
+								<td><img src ="http://marondal.com/material/images/dulumary/web/jstl/partlyCloudy.jpg"></td>
 							</c:when>
-							<c:when test="${fn:contains(weather.weather, '맑음' )}">
-							<td><img src ="http://marondal.com/material/images/dulumary/web/jstl/sunny.jpg"></td>
+							<c:when test="${weather.weather eq '맑음' }">
+								<td><img src ="http://marondal.com/material/images/dulumary/web/jstl/sunny.jpg"></td>
 							</c:when>
-							<c:when test="${fn:contains(weather.weather, '흐림' )}">
-							<td><img src ="http://marondal.com/material/images/dulumary/web/jstl/cloudy.jpg"></td>
+							<c:when test="${weather.weather eq '흐림' }">
+								<td><img src ="http://marondal.com/material/images/dulumary/web/jstl/cloudy.jpg"></td>
 							</c:when>
-							<c:otherwise>
+							<c:otherwise><!-- 그외에 -->
 								<td>${weather.weather }</td>
 							</c:otherwise>
 						</c:choose>
