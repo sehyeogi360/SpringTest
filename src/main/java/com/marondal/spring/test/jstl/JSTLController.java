@@ -187,6 +187,10 @@ public class JSTLController {
 			return "jstl/test04";	
 	}
 		
+		
+		@Autowired
+		private WeatherHistoryBO weatherHistoryBO;
+		
 		//weatherController 따로만들어보기
 		@GetMapping("/test05") //select			
 		public String test05(Model model) {
@@ -204,21 +208,20 @@ public class JSTLController {
 		}
 		
 		
-		@Autowired
-		private WeatherHistoryBO weatherHistoryBO;
+		
 		
 		@GetMapping("/add")//전달이 안될만큼 많지도 않아서 겟
 		@ResponseBody//무엇을리턴할지에 따라 붙이고 말고 함 있는거는 데이터 자체 리턴 없는거는 경로리턴
 		public String addWeatherHistory(
-				@DateTimeFormat(pattern="yyyy년 MM월 dd일") //이라는 거 활용 마치 parseDate와유사
-				@RequestParam("date") Date date
+				 //이라는 거 활용 마치 parseDate와유사
+				@RequestParam("date") @DateTimeFormat(pattern="yyyy년 MM월 dd일") Date date
 				, @RequestParam("weather") String weather
 				, @RequestParam("temperatures") double temperatures //파라미터와 변수가 굳이 같을 이유는 없다.
 				, @RequestParam("preciptation") double preciptation
 				, @RequestParam("microDust") String microDust
 				, @RequestParam("windSpeed") double windSpeed
 //				@ModelAttribute WeatherHistory weatherhistory
-				, Model model) {
+				) {
 			
 			int count = weatherHistoryBO.addWeatherHistory(date, weather, temperatures, preciptation, microDust, windSpeed);
 

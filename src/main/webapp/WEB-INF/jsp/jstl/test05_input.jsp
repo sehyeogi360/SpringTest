@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-		  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
         <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -42,57 +42,75 @@
 					<li class="nav-item"><a class="nav-link text-white" href="#">관측기후</a></li>
 				</ul>
 			</aside>
-			<article class="article  col-10">
+			<article class="article">
 				<h1>날씨 입력</h1>
 													
 				<form method="get" action="/jstl/add"><!-- 애드페이지로 이동시키기 이거 구현해보기 -->
 				
-				<div class="d-flex mt-5">
+				<div class="d-flex align-items-center mt-5">
 					<!-- 날짜도 데이트피커 활용해보기 -->
-					<label class="ml-3">날짜</label><input type="text" class="form-control col-3" id="date" name="date">
-					<label class="ml-3">날씨</label>
-					<select id = "date" class="form-control col-3" name="weather">
-						<option>맑음</option>
-						<option>구름조금</option>
-						<option>흐림</option>
-						<option>비</option>
-					</select> 
-					<label class="ml-3">미세먼지</label>
-					<select class="form-control col-3" name="microDust">
-						<option>좋음</option>
-						<option>보통</option>
-						<option>나쁨</option>
-					</select> 
-				
+					<div class="d-flex align-items-center">
+						<label class="input-lable">날짜</label><input type="text" class="form-control" id="date" name="date">
+					</div>
+					
+					<div class="d-flex align-items-center">
+						<label class="input-lable">날씨</label>
+					
+					
+					
+						<select class="form-control" name="weather"><!-- 여기에 실수로 id 부여 -->
+							<option>맑음</option>
+							<option>구름조금</option>
+							<option>흐림</option>
+							<option>비</option>
+						</select> 
+					</div>
+					
+					<div class="d-flex align-items-center">
+						<label class="ml-3">미세먼지</label>
+						<select class="form-control" name="microDust">
+							<option>좋음</option>
+							<option>보통</option>
+							<option>나쁨</option>
+						</select> 
+					</div>
+					
 				</div>
 				
 				
-				<div class="d-flex mt-5">
-				
-					<label class="ml-4">기온</label>					
-					  <input type="text" class="form-control col-3" name="temperatures" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
-					  <div class="input-group-append">
-					    <span class="input-group-text" id="basic-addon2">℃</span>
-					  </div>
-					
-					
-					<label class="ml-5">강수량</label>						
-						<input type="text" class="form-control col-3" name="precipitation" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
-					  	<div class="input-group-append">
-					    <span class="input-group-text" id="basic-addon2">mm</span>
-					  </div>					
-					
-					
-					<label class="ml-5">풍속</label>						
-						<input type="text" class="form-control col-3" name="windSpeed" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
-					  	<div class="input-group-append">
-					    <span class="input-group-text" id="basic-addon2">km/h</span>
-					  </div>
-	
-				</div>
+				 <div class="d-flex justify-content-between mt-5">
+	                    <div class="d-flex align-items-center">
+	                        <label class="col-3">기온</label> 
+	                        <div class="input-group">
+	                            <input type="text" class="form-control" name="temperatures">
+	                            <div class="input-group-append">
+	                                <span class="input-group-text">℃</span>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="d-flex align-items-center">
+	                        <label class="col-4">강수량</label> 
+	                        <div class="input-group">
+	                            <input type="text" class="form-control" name="precipitation">
+	                                <div class="input-group-append">
+	                                    <span class="input-group-text">mm</span>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    
+	                    <div class="d-flex align-items-center">
+	                        <label class="col-3">풍속</label> 
+	                        <div class="input-group">
+	                            <input type="text" class="form-control" name="windSpeed"> 
+	                                <div class="input-group-append">
+	                                    <span class="input-group-text">km/h</span>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
 				
 				<div class="text-right">
-					<button type="submit" class="btn btn-success mt-3 ">저장</button>
+					<button type="submit" class="btn btn-success">저장</button>
 				</div>
 				
 				
@@ -113,10 +131,10 @@
 		
 		</footer>
 	</div>
-	<script>
+	<script> 
 	$(document).ready(function() {
 		
-		$(#date).datepicker({
+		$("#date").datepicker({
 			
              dateFormat: "yy년 mm월 dd일"
 		});
