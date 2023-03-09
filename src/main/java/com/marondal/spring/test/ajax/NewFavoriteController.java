@@ -50,7 +50,7 @@ public class NewFavoriteController {
 		
 		int count = favoriteBO.inputFavorite(name, url);
 		
-		return "redirect:/ajax/list";
+		return "redirect:/ajax/favorite/list";
 		
 	}
 	

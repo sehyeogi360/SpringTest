@@ -6,7 +6,7 @@
 
 	<mapper namespace="com.marondal.spring.test.ajax.dao.FavoriteDAO">
 	
-	<select id="selectFavorite" resultType="com.marondal.spring.test.ajax.model.Favorite">
+	<select id="selectFavoriteList" resultType="com.marondal.spring.test.ajax.model.Favorite">
 		SELECT 
 				`id`
 				,`name`
@@ -18,8 +18,7 @@
 
 	</select>
 	
-	<insert id="insertFavorite" parameterType="com.marondal.spring.test.ajax.model.Favorite"
-	useGeneratedKeys="true" keyProperty = "id">
+	<insert id="insertFavorite" parameterType="com.marondal.spring.test.ajax.model.Favorite">
 		INSERT INTO 
 					`site`
 			(
