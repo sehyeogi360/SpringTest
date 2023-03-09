@@ -16,7 +16,7 @@ public interface WeatherHistoryDAO {
 			@Param("date")Date date
 			, @Param("weather") String weather
 			, @Param("temperatures")double temperatures
-			, @Param("precipitation")double precipitation
+			, @Param("precipitation")double precipitation 
 			, @Param("microDust") String microDust
 			, @Param("windSpeed") double windSpeed
 			);//객체 아니면 파라미터로 나열 리턴타입은 int

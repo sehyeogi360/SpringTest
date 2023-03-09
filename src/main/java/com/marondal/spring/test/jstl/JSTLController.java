@@ -218,12 +218,12 @@ public class JSTLController {
 				 @RequestParam("date")  Date date
 				, @RequestParam("weather") String weather
 				, @RequestParam("temperatures") double temperatures //파라미터와 변수가 굳이 같을 이유는 없다.
-				, @RequestParam("preciptation") double preciptation
+				, @RequestParam("precipitation") double precipitation 
 				, @RequestParam("microDust") String microDust
 				, @RequestParam("windSpeed") double windSpeed
 				) {
 			
-			int count = weatherHistoryBO.addWeatherHistory(date, weather, temperatures, preciptation, microDust, windSpeed);
+			int count = weatherHistoryBO.addWeatherHistory(date, weather, temperatures, precipitation, microDust, windSpeed);
 
 			return "redirect:/jstl/test05";//삽입후 바로 리스트 창으로
 		}
