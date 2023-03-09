@@ -211,7 +211,7 @@ public class JSTLController {
 		
 		
 		@GetMapping("/add")//전달이 안될만큼 많지도 않아서 겟
-		@ResponseBody//무엇을리턴할지에 따라 붙이고 말고 함 있는거는 데이터 자체 리턴 없는거는 경로리턴
+//		@ResponseBody//무엇을리턴할지에 따라 붙이고 말고 함 있는거는 데이터 자체 리턴 없는거는 경로리턴
 		public String addWeatherHistory(
 				 //이라는 거 활용 마치 parseDate와유사
 				@DateTimeFormat(pattern="yyyy년 MM월 dd일")//이것도 패턴 변경

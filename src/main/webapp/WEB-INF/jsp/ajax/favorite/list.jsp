@@ -26,25 +26,15 @@
 		</thead>
 		
 		<tbody>
+		<c:forEach var="favorite" items="${favoriteList }" varStatus="status">
 			<tr>
-				<td>1</td>
-				<td>마론달</td>
-				<td>https://marondal.com</td>
+				<td>${status.count }</td>
+				<td>${favorite.name }</td>
+				<td>${favorite.url }</td>
 			
 			</tr>
-			<tr>
-				<td>2</td>
-				<td>구글</td>
-				<td>https://google.com</td>
-			
-			</tr>
-			<tr>
-				<td>3</td>
-				<td>이름</td>
-				<td>주소</td>
-			
-			</tr>
-		
+		</c:forEach>
+	
 		</tbody>
 	
 	</table>

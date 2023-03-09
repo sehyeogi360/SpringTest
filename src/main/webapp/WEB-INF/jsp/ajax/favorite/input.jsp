@@ -20,32 +20,58 @@
 <body>
 	
 	<label>제목</label><br>
-	<input type="text" name="title" id="titleInput"> 
+	<input type="text" name="name" id="nameInput" class="col-10"> <br>
 	<label>주소</label><br>
-	<input type="text" name="address" id="addressInput"> 
-	
-	<button type="submit" id ="addBtn" class="btn btn-success">추가</button>
+	<input type="text" name="url" id="urlInput" class="col-10"> <br>	
+	<button type="submit" id ="addBtn" class="btn btn-success col-10">추가</button>
 	
 
 <script>
-	$(document).ready function(){
+	$(document).ready (function(){
 		$("#addBtn").on("click", function(){
-			let title = $("#titleInput").val();
-			let address = $("#addressInput").val();
+			let name = $("#nameInput").val();
+			let url = $("#urlInput").val();
 			
-			if(title == ""){
-				alert("제목을 입력하세요.");
+			if(name == ""){
+				alert("이름을 입력하세요");
+				return ;
 			}
 			
-			if(address == ""){
-				alert("주소를 입력하세요.")
+			if(url == ""){
+				alert("주소를 입력하세요.");
+				return ;
 			}
 			
 			
 			//ajax활용해보기
+			
+			$.ajax({
+				type:"get"
+				, url:"/ajax/favorite/add"
+				, data:{"name" : name, "url" : url}
+				, success:function(data) {
+					alert("");
+				if(data.result == "success"){
+					location.href = "/ajax/favorite/list";
+				} else {
+					alert("추가 실패");
+				}
+			}
+				
+				, error:function(){
+					alert("추가 에러");
+				}
+				
+			});
+			
+			
+			
 		});
 		
 	});
+	
+	
+	
 
 </script>
 
