@@ -9,16 +9,16 @@
 	<select id="selectFavoriteList" resultType="com.marondal.spring.test.ajax.model.Favorite">
 		SELECT 
 				`id`
-				,`name`
-				,`url`
-				,`createdAt`
-				,`updatedAt`		 
+				, `name`
+				, `url`
+				, `createdAt`
+				, `updatedAt`		 
 		
 		FROM `site`;
 
 	</select>
 	
-	<insert id="insertFavorite" parameterType="com.marondal.spring.test.ajax.model.Favorite">
+	<insert id="insertFavorite" parameterType="map"><!-- 여러개이므로 map resulttype int고정이므로 생략-->
 		INSERT INTO 
 					`site`
 			(
@@ -37,6 +37,29 @@
 		)
 	
 	</insert>
+	
+								<!-- result type이 리턴타입이다 다오에서 int가 리턴타입이므로 -->
+	<select id="selectCountUrl" resultType="int" parameterType="String">
+		SELECT 
+			count(1)
+		FROM 
+			`site`
+		WHERE `url` = #{url};
+
+	</select>
+	
+	
+	<!-- 삭제하기 -->
+	<delete id="deleteUrl" parameterType="String">
+		DELETE 
+		FROM 
+			`site`
+		WHERE 
+			`id` = #{id};
+		
+	</delete>
+	
+	
 	
 	</mapper>
   

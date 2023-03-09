@@ -14,29 +14,42 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
 </head>
 <body>
-
+	<h1>즐겨 	찾기 목록</h1>
 	<table class="table">
 		<thead>
 			<tr>
 				<th>No.</th>
 				<th>이름</th>
 				<th>주소</th>
+				<th></th>
 			</tr>
 		</thead>
 		
 		<tbody>
-		<c:forEach var="favorite" items="${favoriteList }" varStatus="status">
+		<c:forEach var="favorite" items="${favoriteList }" varStatus="status"><!-- 반복문 활용 코어라이브러리도 추가 -->
 			<tr>
 				<td>${status.count }</td>
-				<td>${favorite.name }</td>
-				<td>${favorite.url }</td>
-			
+				<td>${favorite.name }</td><!-- 네임이라는 멤버변수 -->
+				<td>${favorite.url }</td><!-- url라는 멤버변수 -->
+				<td><button id ="deleteBtn"class="btn btn-danger">삭제</button></td>
 			</tr>
 		</c:forEach>
 	
 		</tbody>
 	
 	</table>
-
+	<script>
+	
+	//삭제 버튼
+	$(document).ready(function(){
+		
+		$("#deleteBtn").on("click", function(){
+			
+			
+		});
+		
+		
+	});
+	</script>
 </body>
 </html>
