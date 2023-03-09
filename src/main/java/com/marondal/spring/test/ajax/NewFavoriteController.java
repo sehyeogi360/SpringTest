@@ -42,7 +42,6 @@ public class NewFavoriteController {
 	}
 	
 	@GetMapping("/add")
-	@ResponseBody
 	public String addFavorite(
 			@RequestParam("name")String name
 			, @RequestParam("url")String url
