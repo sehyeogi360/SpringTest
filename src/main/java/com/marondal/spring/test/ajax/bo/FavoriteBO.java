@@ -43,9 +43,7 @@ public class FavoriteBO {
 		// 삭제하기
 		
 		public int deleteUrl(int id) {
-			
-			int count = favoriteDAO.deleteUrl(id);
-			
+
 			return favoriteDAO.deleteUrl(id);
 	
 		}

@@ -14,6 +14,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
 </head>
 <body>
+	<div class="container">
 	<h1>즐겨 	찾기 목록</h1>
 	<table class="table">
 		<thead>
@@ -31,22 +32,43 @@
 				<td>${status.count }</td>
 				<td>${favorite.name }</td><!-- 네임이라는 멤버변수 -->
 				<td>${favorite.url }</td><!-- url라는 멤버변수 -->
-				<td><button id ="deleteBtn"class="btn btn-danger">삭제</button></td>
+				<td><button type="submit" id ="deleteBtn" class="btn btn-danger">삭제</button></td>
 			</tr>
 		</c:forEach>
 	
 		</tbody>
 	
 	</table>
+	</div>
 	<script>
 	
 	//삭제 버튼
 	$(document).ready(function(){
 		
 		$("#deleteBtn").on("click", function(){
-			
+			let id = 
 			
 		});
+		
+		$.ajax({
+			type: "GET"
+			, url: "/ajax/favorite/delete"
+			, data: {"id": id}
+			, success: function(data){
+			
+				if(data.result == "success"){
+					location.href="/ajax/favorite/list";
+				} else {
+					alert("삭제 실패");
+				}
+			} 
+			, error:function(){
+				alert("추가 에러");
+			}
+			
+		});
+		
+
 		
 		
 	});

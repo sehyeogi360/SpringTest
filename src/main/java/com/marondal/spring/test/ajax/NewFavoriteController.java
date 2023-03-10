@@ -95,10 +95,20 @@ public class NewFavoriteController {
 	// 삭제하기 insert하면 insert 한 결과가 잘됐는지 확인하듯이 마찬가지로 결과 확인 insert와 유사하게 만들어가면 될듯 
 	@GetMapping("/delete")
 	@ResponseBody
-	public String delete(@RequestParam("id") int id) {//id가 기준이되야함
+	public Map<String, String> delete(@RequestParam("id") int id) {//id가 기준이되야함
 		
+		int count = favoriteBO.deleteUrl(id);
 		
-		return "";
+		Map<String, String> resultMap = new HashMap<>();
+		
+		if(count == 1) {
+			resultMap.put("result", "success"); 
+		} else {
+			resultMap.put("result", "failure");
+		}
+		
+		return resultMap;
+		
 	}
 	
 	
