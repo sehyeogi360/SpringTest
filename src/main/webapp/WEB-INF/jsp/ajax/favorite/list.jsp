@@ -32,7 +32,7 @@
 				<td>${status.count }</td>
 				<td>${favorite.name }</td><!-- 네임이라는 멤버변수 -->
 				<td>${favorite.url }</td><!-- url라는 멤버변수 -->
-				<td><button type="submit" id ="deleteBtn" class="btn btn-danger">삭제</button></td>
+				<td><button type="submit" id ="deleteBtn" onclick="deleteRow(this);" class="btn btn-danger">삭제</button></td>
 			</tr>
 		</c:forEach>
 	
@@ -46,8 +46,9 @@
 	$(document).ready(function(){
 		
 		$("#deleteBtn").on("click", function(){
-			let id = 
-			
+			 var ths = $(ths);
+			    
+			  ths.parents("tr").remove();
 		});
 		
 		$.ajax({
