@@ -1,0 +1,87 @@
+#wrap{
+    width:1200px;
+   
+    margin:auto;/*가운데 정렬*/
+}
+
+header{
+    height:100px;
+}
+
+.main-menu{
+    height:40px;
+    background-color: coral;
+}
+
+header >.nav{
+    height:50px;
+    background-color: coral;    
+}
+
+/*높이제거 해야 푸터 안먹음*/
+
+.contents {
+
+    height:800px;
+}
+
+/* .contents >.article {
+    height:500px;
+    
+} */
+
+
+
+.contents >.aside {
+    height:300px;
+    
+}
+
+.aside > .booking{
+    height:300px;
+    background-color: chocolate;
+}
+
+
+.book {
+    font-size: 30px;
+}
+
+
+
+.aside >.booking-confirm{
+    height:300px;
+    background-color: darkorange;
+}
+
+.booking-confrim>.confirm{
+    font-size: 22px;
+}
+
+.aside > .booking-contact{
+    height:300px;
+    background-color: chocolate;
+}
+.contact{
+    font-size: 30px;
+}
+/* .aside > .booking-contact{
+    height:300px;
+    background-color: brown;
+} */
+
+/* .contact{
+    font-size:30px;
+    background-color: brown;
+} */
+
+
+
+footer {
+    height: 100px;
+    
+}
+
+.hide{
+    display:none;
+}

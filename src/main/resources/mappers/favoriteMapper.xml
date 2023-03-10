@@ -39,7 +39,7 @@
 	</insert>
 	
 								<!-- result type이 리턴타입이다 다오에서 int가 리턴타입이므로 -->
-	<select id="selectCountUrl" resultType="int" parameterType="String">
+	<select id="selectCountUrl" resultType="int" parameterType="String"><!-- 문자열 하나이므로 string -->
 		SELECT 
 			count(1)
 		FROM 
@@ -49,8 +49,8 @@
 	</select>
 	
 	
-	<!-- 삭제하기 -->
-	<delete id="deleteUrl" parameterType="String">
+	<!-- 삭제하기 --> <!-- 당연히 int -->
+	<delete id="deleteUrl" parameterType="int">
 		DELETE 
 		FROM 
 			`site`

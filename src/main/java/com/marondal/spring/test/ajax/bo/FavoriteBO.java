@@ -30,14 +30,16 @@ public class FavoriteBO {
 		
 	}
 	
-	public boolean isDuplicate(String url) {//
+	public boolean isDuplicate(String url) {// url 전달받아서 중복여부를 알려주는 기능
 		
-		int count = favoriteDAO.selectCountUrl(url);
-		if(count == 0) {
-			return false; //중복 되는게 없다.
-		} else {
-			return true;//중복되는게 있다.
-		}
+		int count = favoriteDAO.selectCountUrl(url); 
+//		if(count == 0) {
+//			return false; //중복 되는게 없다.
+//		} else {
+//			return true;//중복되는게 있다.
+//		}
+		//위에걸 한줄로 요약 하면. 0이아닌게 true 0이맞으면 false? 굳이 헷갈리면 이걸 쓸필욘없다고 함.
+		return count != 0;
 	}	
 	
 		// 삭제하기

@@ -72,36 +72,43 @@ public class NewFavoriteController {
 		
 	}
 	
-	//중복 확인
-	
-	@GetMapping("/duplicate")
+	// 즐겨 찾기 주소를 전달 받고, 해당 주소가 중복되어있는지 확인한다.
+	// 중복 여부를 response로 전달한다.
+	// post로 한다.
+	@PostMapping("/duplicate")
 	@ResponseBody
 	public Map <String, Boolean> isDuplicate(
-			@RequestParam("url") String url ) {
-		
+			@RequestParam("url") String url ) {//즐겨 찾기 주소 전달 받기
+		// 키는 문자열 밸류는 true,false해야 하므로 wrapperclass인 boolean
 		Map <String, Boolean> isDuplicateEmail = new HashMap<>();
 		
-		if(favoriteBO.isDuplicate(url)) {
-			isDuplicateEmail.put("is_duplicate", true);
-		}else {
-			isDuplicateEmail.put("is_duplicate", false);
-		}
+		// 중복된 경우 : {"is_duplicate" : true}
+		// 중복이 안된 경우 : {"is_duplicate": false}	
 		
-			
-		return isDuplicateEmail;	
+//		if(favoriteBO.isDuplicate(url)) {//중복된다
+//			isDuplicateEmail.put("is_duplicate", true);
+//		}else {//그게 아니다
+//			isDuplicateEmail.put("is_duplicate", false);
+//		}
+		
+		isDuplicateEmail.put("is_duplicate", favoriteBO.isDuplicate(url));	//큰 이해가 안간다면 안쓰길 추천.
+		
+		return isDuplicateEmail;//api는 그결과를 json형태 데이터로 	
 		
 	}
 	
 	// 삭제하기 insert하면 insert 한 결과가 잘됐는지 확인하듯이 마찬가지로 결과 확인 insert와 유사하게 만들어가면 될듯 
-	@GetMapping("/delete")
+	@GetMapping("/delete")//id기반으로 삭제하는 api 이거자체는 쉬운데 이거를 호출하는 과정이 어려움 
 	@ResponseBody
-	public Map<String, String> delete(@RequestParam("id") int id) {//id가 기준이되야함
-		
+	public Map<String, String> deleteFavorite(@RequestParam("id") int id) {//id가 기준이되야함
+		//map 형태가 그대로 리턴
 		int count = favoriteBO.deleteUrl(id);
+		// 성공: {"result":"success"}
+		// 실패: {"result":"failure"}		
 		
 		Map<String, String> resultMap = new HashMap<>();
 		
-		if(count == 1) {
+		if(count == 1) {//1인 경우가 성공
 			resultMap.put("result", "success"); 
 		} else {
 			resultMap.put("result", "failure");

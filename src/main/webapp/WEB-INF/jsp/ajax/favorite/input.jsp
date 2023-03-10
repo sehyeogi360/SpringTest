@@ -21,46 +21,82 @@
 		<label>제목</label><br>
 		<input type="text" name="name" id="nameInput" class="col-10"> <br><!-- id값 주기 -->
 		<label>주소</label><br>
-		<input type="text" name="url" id="urlInput" class="col-10"> <button type="submit" id="duplicateBtn" class="btn btn-info"> 중복확인</button> <br>
-		<button type="submit" id ="addBtn" class="btn btn-success col-10">추가</button>
+		<div class="d-flex">
+			<input type="text" name="url" id="urlInput" class="col-10"> 
+			<button type="submit" id="duplicateBtn" class="btn btn-info"> 중복확인</button> <br>
+			 <!-- 이렇게 div로 잡아준담 d-flex -->
+		 </div>
+		 <div><small id="idInfo" class="d-none text-danger">중복된 url 입니다.</small></div>
+		 <div><small id="idInfo2" class="d-none text-danger">저장 가능한 url 입니다.</small></div>
+		<button type="submit" id ="addBtn" class="btn btn-success ">추가</button>
 	</div>
 
 <script>
 	$(document).ready (function(){
 		
+		//전역변수
+		var isChecked = false;//첨엔체크안된상태
+		var isDuplicate = true; // 중복이 된게 초기값
 		
-		$("#duplicateBtn").on("click", function(){
+		$("#urlInput").on("input", function(){//url 건드렸을때 즉각반응하게끔
+			isChecked = false;
+			isDuplicate = true;
+			$("#idInfo").addClass("d-none");
+			$("#idInfo2").addClass("d-none");
 			
+		});
+	
+		
+		
+		
+		$("#duplicateBtn").on("click", function(){//해당버튼에대한 클릭이벤트			
 			let url = $("#urlInput").val();
 			
 			if(url == ""){
 				alert("주소를 입력하세요.");
 				return ;
 			}
-	
 		
-		//중복확인
-		
-		$.ajax({
-			type:"get"
-			, url:"/ajax/favorite/duplicate"
-			, data:{"url" : url} 
-			, success:function(data) {
-				// 중복된 경우 {"is_duplicate":true}
-				// 중복되지 않은 경우 {"is_duplicate":false}
-
-			if(data.is_duplicate){
-				alert("중복되었습니다.")
-			} else {
-				alert("사용가능한 url입니다.");
+			// http로 시작하지 않고 https로 시작하지도 않으면 경고창을 띄워라
+			// http://naver.com
+			if(!url.startsWith("http://") && !url.startsWith("https://")){
+				alert("주소 형식이 잘못되었습니다");
+				return ;
 			}
-		}
 			
-			, error:function(){
-				alert("추가 에러");
+			
+			$.ajax({ //버튼 안에 아작스가 들어가있어야 함
+				type:"post"
+				, url:"/ajax/favorite/duplicate"
+				, data:{"url" : url} //여기까지가 리퀘스트를 위한 옵션들
+				, success:function(data) {
+					
+					// 중복체크 여부 저장
+					isChecked = true;
+					
+					// 중복된 경우 {"is_duplicate":true}
+					// 중복되지 않은 경우 {"is_duplicate":false}
+					// 그 리스폰스 규격에 맞춰서 리스폰스 데이터 사용
+				if(data.is_duplicate){// 멤버변수처럼 바로 사용할수 있다.
+					$("#idInfo").removeClass("d-none");
+					$("#idInfo2").addClass("d-none");
+					
+					isDuplicate = true;
+				} else {
+					$("#idInfo2").removeClass("d-none");
+					$("#idInfo").addClass("d-none");
+					
+					isDuplicate = false;
+				}
 			}
-		});
-	});
+				
+				, error:function(){
+					alert("추가 에러");
+				}
+			});	
+			
+		});	
+	
 		
 		$("#addBtn").on("click", function(){
 			let name = $("#nameInput").val();//""안은 에러 안뜨므로 조심
@@ -76,14 +112,23 @@
 				return ;
 			}
 			
-			// http로 시작하지 않고 https로 시작하지도 않으면 경고창을 띄워라
-			// http://naver.com
 			if(!url.startsWith("http://") && !url.startsWith("https://")){
 				alert("주소 형식이 잘못되었습니다");
 				return ;
 			}
+		
 			
-			
+			// 중복체크가 되지 않은경우
+			//if(isChecked == false) {
+			if(!isChecked) {
+				alert("중복체크를 진행해주세요");
+				return ;
+			}
+			// 중복된 url인 경우
+			if(isDuplicate){
+				alert("중복된 url 입니다");
+				return ;
+			}
 			
 			// ?name=네이버&url=https://naver.com
 			$.ajax({
@@ -107,13 +152,12 @@
 				}
 				
 			});
-			
-			
-			
+		
+		
 		});
 		
+		
 	});
-	
 	
 	
 

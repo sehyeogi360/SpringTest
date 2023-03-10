@@ -16,8 +16,8 @@ public interface FavoriteDAO {
 			  @Param("name") String name
 			, @Param("url") String url
 			);
-
-	public int selectCountUrl(@Param("url") String url);//중복여부 세기
+	//전달받은값이 일치하는 갯수 확인 0이면 중복되지않는다 그외엔 중복된다.
+	public int selectCountUrl(@Param("url") String url);//전달받을 값은 확인할 url 갯수를 return 그래서 int type
 
 	public int deleteUrl(@Param("id") int id);
 	
