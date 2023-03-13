@@ -10,11 +10,11 @@
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-        
+        <!--  
         <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+			-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <!--datepicker-->
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
@@ -23,11 +23,13 @@
 </head>
 <body>
 	<div id = "wrap" class="">
-            <header class ="d-flex justify-content-center align-items-center"><!--텍스트 센터를 할수도 있지만 이걸로 하자.-->
-                <div class="display-4">통나무 펜션</div>
+       <header class ="d-flex justify-content-center align-items-center"><!--텍스트 센터를 할수도 있지만 이걸로 하자.-->
+             <div class="display-4">통나무 펜션</div>
                 
-            </header>
-            <nav class="main-menu mt-3 "><!--내비 밑에-->
+                
+             
+        </header>
+         <nav class="main-menu mt-3 "><!--내비 밑에-->
                 <ul class="nav nav-fill d-flex justify-content:space-around align-items-center"><!--왼쪽에 몰림 방지 nav-fill-->
                     <li class="nav-item ml-5"><a href="#" class= "nav-link text-white font-weight-bold">펜션소개</a></li>
                     <li class="nav-item ml-5"><a href="#" class= "nav-link text-white font-weight-bold">객실보기</a></li>
@@ -35,14 +37,16 @@
                     <li class="nav-item ml-5"><a href="#" class= "nav-link text-white font-weight-bold">커뮤니티</a></li>
                 </ul>
             </nav>
-            <section class="contents"><!--크게 두개로 나누기 div 두개로-->
-                <article class="article bg-info">
+            
+            <section class="contents">
+            	 <article class="article bg-info">
                     <div class="slide show"><!--객체화시켜야 해서 id 값준다.-->
                         <img id="image" alt="펜션" src="http://marondal.com/material/images/dulumary/web/front/jquery/test06_banner1.jpg">
                     </div>    
                 </article>
+                
                 <aside class="aside d-flex">
-                    <div class="booking col-4 d-flex justify-content-center align-items-center">
+                	<div class="booking col-4 d-flex justify-content-center align-items-center">
                         <div class="book text-white  my-3 "><!--텍스트센터 없애기-->
                             <div class="display-4">실시간 <br>예약하기</div> <!--직접줘도 사관업승 <div display -4 -->
                             
@@ -51,8 +55,8 @@
                     <div class="booking-confirm col-5">
                         <div class=" my-3 d-flex align-items-end"><!--div 로 한번더 묶기 d-flex 묶기. 회원 비회원 좀더 떨어지게 세로배치 하기-->
                             <h2 class="mr-3 text-white">예약확인</h2><!--마진까지-->        <!--네임속성 같게-->
-                           <!-- <label class="mt-3 ml-3 text-white">회원<input type = "radio" name = "people" value="memberRadio" checked></label>--><!--이러면 기본이 회원으로 잡힘.-->
-                            <!-- <label class="mt-3 ml-3 text-white">비회원<input type = "radio" name = "people" value="nomemberRadio"></label><br> -->
+                            <label class="mt-3 ml-3 text-white">회원<input type = "radio" name = "people" value="memberRadio" checked></label><!--이러면 기본이 회원으로 잡힘.-->
+                            <label class="mt-3 ml-3 text-white">비회원<input type = "radio" name = "people" value="nomemberRadio"></label><br>
                         </div>
                         
 
@@ -65,34 +69,52 @@
                             </div>  
                         </div>
                         
-                            <!--비회원라디오 버튼 선택시. 이름 전화번호 날짜 -->
-                     
-                        <div class="d-flex justify-content-end mt-3">   <!--오른쪽 배치.-->
-                            <button id="searchButton" class="btn btn-success float-right" >조회하기</button><!--id 부여하기-->
+                             <!--비회원라디오 버튼 선택시. 이름 전화번호 날짜 -->
+                        <div class="d-none" id="nomemberInput"><!--얘네를 감싸는 디브 하나더 위에도 멤버인풋--><!--여기도 요소 하나하나 디브 먹이기.-->
+                            <div class="d-flex align-items-center mt-3"><!--여기부분이랑 라디오 조회 처리 해보기.-->
+                                <label class="text-white col-3">이름:</label><input type = "text" id = "nameInput"  class="form-control"><br>
+                            </div>   
+                            <div class="d-flex align-items-center mt-3"><!--여기부분이랑 라디오 조회 처리 해보기.-->
+                                <label class="text-white col-3">전화번호:</label><input type = "text" id = "phoneInput"  class="form-control"><br>
+                            </div> 
+                            <div class="d-flex align-items-center mt-3"><!--여기부분이랑 라디오 조회 처리 해보기.-->
+                                <label class="text-white col-3">날짜:</label><input type = "text" id = "dateInput"  name = "number" class="form-control" autocomplete="off"><br>
+                            </div> 
+                              
+                        </div>   
+                        
+                         <div class="d-flex justify-content-end mt-3">   <!--오른쪽 배치.-->
+                            <button id="searchButton" class="btn btn-success float-right">조회하기</button><!--id 부여하기-->
                         </div>
                         <!-- <div class="d-flex justify-content-end">  
                             <button id="nosearchButton" class="btn btn-success float-right d-none" >비회원조회하기</button>
                         </div>     -->
                     </div>
                     <div class=" booking-contact col-3 d-flex justify-content-center align-items-center">
-                        <div class="contact text-white my-3 text-bold"><!--display-4 변경 가운데 배치로 변경해보기 텍스트 화이트-->
+                        <div class="contact text-white my-3 text-bold display-4"><!--display-4 변경 가운데 배치로 변경해보기 텍스트 화이트-->
                             예약문의: <br>
                             010-<br>
                             000-1111
                         </div>
                     </div>
+                
                 </aside>
-
+            
+            
+            
             </section>
-
-            <footer>
+            <footer class="">
                <div class="text-secodary small mt-3 ml-3">
                     제주특별자치도 제주시 애될읍 <br>
                     사업자 등록번호 111-22-25522<br>
                     copyright 2025 allright reserved.<br>
                </div> 
             </footer>
-        </div>
+               
+             
+       
+       
+       </div>
 
         <script>
             $(document).ready(function() {

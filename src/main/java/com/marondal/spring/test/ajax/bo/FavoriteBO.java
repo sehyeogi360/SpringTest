@@ -46,7 +46,7 @@ public class FavoriteBO {
 		
 		public int deleteUrl(int id) {
 
-			return favoriteDAO.deleteUrl(id);
+			return 0;
 	
 		}
 	
