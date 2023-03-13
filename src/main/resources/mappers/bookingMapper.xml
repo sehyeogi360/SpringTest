@@ -6,7 +6,7 @@
   
   	<mapper namespace="com.marondal.spring.test.ajax.dao.BookingDAO">
   	
-  	<select id="selectBookingList" resultType="com.marondal.spring.test.ajax.model.Booking">
+  	<select id="selectBookingList" resultType="com.marondal.spring.test.ajax.model.Booking"><!-- 파라미터 없으니 생략 리설트 타입 우리가 직접만든 부킹이란클래스 -->
   		SELECT 
   			`id`
   			, `name`
@@ -18,10 +18,30 @@
   			, `createdAt`
   			, `updatedAt`
   		FROM 
-  			`booking`;
+  			`booking`
+  		ORDER BY
+  			`id` DESC;
   	</select>
   	
-  	<insert id="insertBookingList" parameterType="map">
+  	<select id="selectBooking" resultType="com.marondal.spring.test.ajax.model.Booking" parameterType="map">
+  		SELECT 
+  			`id`
+  			, `name`
+  			, `headcount`
+  			, `day`
+  			, `date`
+  			, `phoneNumber`
+  			, `state`
+  			, `createdAt`
+  			, `updatedAt`
+  		FROM 
+  			`booking`
+  			
+  		
+  	
+  	</select>
+  	
+  	<insert id="insertBookingList" parameterType="map"><!-- 여러타입이므로 맵 -->
   		INSERT INTO 
   				`booking`
 			(
@@ -36,12 +56,12 @@
 			)
 			VALUE
 			(
-			, #{name}
-			, #{headcount}
+			 #{name}
+			, #{headcount} <!-- 이키워드들은 dao param 비오 컨트롤로에도 근데 state가 없다. -->
 			, #{day}
 			, #{date}
 			, #{phoneNumber}
-			, #{state}
+			, #{state} <!-- 고정된 값이니 이렇게 '대기중' 써줘도 됨 근데 또 문제가 생김 -->
 			, now()
 			, now()
 		)

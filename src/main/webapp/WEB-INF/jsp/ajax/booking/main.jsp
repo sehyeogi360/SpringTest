@@ -106,6 +106,9 @@
 
         <script>
             $(document).ready(function() {
+            	
+            	
+            	
               
                 //유효성 검사 회원
                 $("#searchButton").on("click", function(){
@@ -121,28 +124,25 @@
                         if(name == "" ){
                             alert("이름을 입력하세요.");
                             return ;
-                        } else if (phoneNumber == ""){//굳이 엘스 안써도 되나봄
+                        } 
+                    	if (phoneNumber == ""){//굳이 엘스 안써도 되나봄
                             alert("전화번호를 입력하세요.");
                             return ;
-                        } else if( name != "" && phoneNumber !="") {
+                        } 
+                    	if( name != "" && phoneNumber !="") {
                             alert("정회원 조회중..")
                         }
 
                
-                    //전화번호가 010으로 시작하는지 
-                     if(!phoneNumber.startsWith("010")){
-                        alert("010으로 시작하게 하세요.");
-                     }   
+	                    //전화번호가 010으로 시작하는지 
+	                     if(!phoneNumber.startWith("010")){
+	                        alert("010으로 시작하게 하세요.");
+	                     }   
+	                    
+	                    
                     
-                    }
+                    });
         
-                });   
-
-         
-
-            
-
-
             //setInterval 가운데 이미지가 3초 마다 다른 이미지로 변경되도록 만드하세요.
             let seconds = 1;
             let timerId;    
@@ -177,6 +177,8 @@
 
             },3000);//3초마다
 
+        
+            
         }); 
         </script>
 

@@ -41,7 +41,7 @@
         </nav>
         
 		<h1 class="text-center">예약하기</h1>
-		
+		<div class="w-50">
 		<label>이름</label><br>
 		<input type="text" name="name" id="nameInput" class="form-control"> 
 		<label>예약날짜</label><br>
@@ -52,26 +52,29 @@
 		<input type="text" name="headcount" id="headcountInput" class="form-control"> 
 		<label>전화번호</label><br>
 		<input type="text" name="phoneNumber" id="phoneNumberInput" class="form-control"> 
-		<button type="submit" id ="addBtn" class="btn btn-warning text-dark col-10">예약하기</button>
-	</div>
-
-	<footer>
+		<button type="submit" id ="addBtn" class="btn btn-warning text-dark mt-3 col-12">예약하기</button>
+		</div>
+		
+		<footer>
                <div class="text-secodary small mt-3 ml-3">
                     제주특별자치도 제주시 애될읍 <br>
                     사업자 등록번호 111-22-25522/농어촌민박사업자지정/ 대표:김통목<br>
                     copyright 2025 tongnamu Allright reserved.<br>
                </div> 
             </footer>
+	</div>
+
+	
 	<script>
 	$(document).ready (function(){
 		
 		$("#date").datepicker({
 			
-            dateFormat: "yy년 mm월 dd일"
+            dateFormat: "yy년 mm월 dd일"//이렇게 한국사람이 알아먹기 쉽게 바꿈
 		});
 		
 		
-		$("#addBtn").on("click", function(){
+		$("#addBtn").on("click", function(){//버튼 안눌리면 api문제가 아닌 검사확인 버튼클릭이벤트문제 alert가뜨면 이벤트문젠 아님 그다음에 값문제 확인
 			
 			
 			let name = $("#nameInput").val();
@@ -92,32 +95,49 @@
 				alert("숙박일수를 입력하세요");
 				return ;
 			}
+			
+			// day 가 숫자만 입력된 경우
+			// day에 숫자가 아닌 문자가 포함된 경우
+			// Not a Number
+			if(isNaN(day)){
+				alert("숙박일수는 숫자만 입력 가능합니다.");
+				return ;
+			}
+			
+
 			if(headcount == ""){
 				alert("숙박인원을 입력하세요");
 				return ;
 			}
+			
+			if(isNaN(headcount)){
+				alert("숙박인원은 숫자만 입력 가능합니다");
+				return ;
+			}
+			
 			if(phoneNumber == ""){
 				alert("전화번호를 입력하세요");
 				return ;
 			}
 		
 			
-			
 			$.ajax({//추가
-				type: "post"
-				, url:"/ajax/booking/add"
+				type: "get"
+				, url:"/ajax/booking/add"								//count인데  : 은 let에 지정한 값
 				, data:{"name": name, "date":date, "day":day, "headcount":headcount, "phoneNumber":phoneNumber}
-				, success:function(data) {
-					
-					if(data.resut =="success") {
+				, success:function(data) {//문자열 값을 얻어오는 과정
+					// 성공 : {"result": success"}
+					// 실패 : {"result": fail"}
+				
+					if(data.result == "success") {//data.result이렇게 값 접근할수 있고
 						location.href="/ajax/booking/list";
-					} else{
-						alert("추가 실패")
+					} else {
+						alert("예약 실패");//;안붙힘
 					}
 					
 				}
 				, error:function(){
-					alert("추가 에러");
+					alert("예약 에러");
 				}
 				
 				
