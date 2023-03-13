@@ -45,7 +45,7 @@
 		<label>이름</label><br>
 		<input type="text" name="name" id="nameInput" class="form-control"> 
 		<label>예약날짜</label><br>
-		<input type="text" name="date" id="dateInput" class="form-control"> 
+		<input type="text" name="date" id="date" class="form-control"> 
 		<label>숙박일수</label><br>
 		<input type="text" name="day" id="dayInput" class="form-control"> 
 		<label>숙박인원</label><br>
@@ -65,11 +65,17 @@
 	<script>
 	$(document).ready (function(){
 		
+		$("#date").datepicker({
+			
+            dateFormat: "yy년 mm월 dd일"
+		});
+		
+		
 		$("#addBtn").on("click", function(){
 			
 			
 			let name = $("#nameInput").val();
-			let date = $("#dateInput").val();
+			let date = $("#date").val();
 			let day = $("#dayInput").val();
 			let headcount = $("#headcountInput").val();
 			let phoneNumber = $("#phoneNumberInput").val();
