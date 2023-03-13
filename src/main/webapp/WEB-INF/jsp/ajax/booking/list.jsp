@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>예약 목록 보기</title>
-		<link rel="stylesheet" href="/booking/style.css" type="text/css">
+		<link rel="stylesheet" href="/css/booking/style.css" type="text/css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
@@ -30,8 +30,8 @@
                 <ul class="nav nav-fill d-flex justify-content:space-around align-items-center"><!--왼쪽에 몰림 방지 nav-fill-->
                     <li class="nav-item ml-5"><a href="#" class= "nav-link text-white font-weight-bold">펜션소개</a></li>
                     <li class="nav-item ml-5"><a href="#" class= "nav-link text-white font-weight-bold">객실보기</a></li>
-                    <li class="nav-item ml-5"><a href="#" class= "nav-link text-white font-weight-bold">예약안내</a></li>
-                    <li class="nav-item ml-5"><a href="#" class= "nav-link text-white font-weight-bold">커뮤니티</a></li>
+                   <li class="nav-item ml-5"><a href="/ajax/booking/input" class= "nav-link text-white font-weight-bold">예약하기</a></li>
+                    <li class="nav-item ml-5"><a href="/ajax/booking/list" class= "nav-link text-white font-weight-bold">예약목록</a></li>
                 </ul>
         </nav>
             
@@ -58,17 +58,20 @@
 					<td>${booking.day }</td>
 					<td>${booking.headcount }</td>
 					<td>${booking.phoneNumber }</td>
+					
 					<c:choose>
 						<c:when test="${booking.state eq '대기중' }">
-							<td class="text-info">대기중</td>
+							<td class="text-info">${booking.state }</td>
 						</c:when>
 						<c:when test="${booking.state eq '확정' }">
-							<td class="text-success">확정</td>
+							<td class="text-success">${booking.state }</td>
 						</c:when>
-						<c:otherwise>
-							<td class="text-danger">취소</td>
+						<c:when test="${booking.state eq '취소' }" >
+							<td class="text-danger">${booking.state }</td>
+						</c:when>
+						<c:otherwise><!-- 그외에 -->
+							<td>${booking.state }</td>
 						</c:otherwise>
-						
 					</c:choose>
 					<td><button id = "deleteBtn" type="button"  class="btn btn-danger delete-btn" data-booking-id="${booking.id }">삭제</button></td>
 				</tr>
@@ -83,11 +86,11 @@
 	
 	</div>
 			<footer>
-               <div class="text-secodary small mt-3 ml-3">
+              <div class="text-secodary small mt-3 ml-3">
                     제주특별자치도 제주시 애될읍 <br>
-                    사업자 등록번호 111-22-25522<br>
-                    copyright 2025 allright reserved.<br>
-               </div> 
+                    사업자 등록번호 111-22-25522/농어촌민박사업자지정/ 대표:김통목<br>
+                    copyright 2025 tongnamu Allright reserved.<br>
+               </div>  
             </footer>
 	<script>
 	$(document).ready(function() {
