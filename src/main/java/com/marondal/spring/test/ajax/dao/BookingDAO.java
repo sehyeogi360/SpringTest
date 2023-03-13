@@ -19,7 +19,8 @@ public interface BookingDAO {
 							, @Param("day") int day
 							, @Param("headcount") int headcount
 							, @Param("phoneNumber") String phoneNumber
-										); 
+							
+							); 
 	
 	public int deleteBookingList(@Param("id") int id);
 

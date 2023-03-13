@@ -37,6 +37,7 @@
 			VALUE
 			(
 			, #{name}
+			, #{headcount}
 			, #{day}
 			, #{date}
 			, #{phoneNumber}

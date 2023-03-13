@@ -22,7 +22,12 @@ public class BookingBO {
 	}
 
 	
-	public int addBooking(String name, Date date, int day, int headcount, String phoneNumber) {
+	public int addBooking(
+			String name
+			, Date date
+			, int day
+			, int headcount
+			, String phoneNumber) {
 		
 		return bookingDAO.insertBookingList(name, date, day, headcount,  phoneNumber);
 		

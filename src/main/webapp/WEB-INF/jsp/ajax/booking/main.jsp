@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>회원 가입화면 만들기</title>
 
-		<link rel="stylesheet" href="style.css" type="text/css">
+		<link rel="stylesheet" href="/booking/style.css" type="text/css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
@@ -22,7 +22,7 @@
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 </head>
 <body>
-	<div id = "wrap" class="">
+	<div id = "wrap" class="container">
        <header class ="d-flex justify-content-center align-items-center"><!--텍스트 센터를 할수도 있지만 이걸로 하자.-->
              <div class="display-4">통나무 펜션</div>
                 
@@ -55,8 +55,7 @@
                     <div class="booking-confirm col-5">
                         <div class=" my-3 d-flex align-items-end"><!--div 로 한번더 묶기 d-flex 묶기. 회원 비회원 좀더 떨어지게 세로배치 하기-->
                             <h2 class="mr-3 text-white">예약확인</h2><!--마진까지-->        <!--네임속성 같게-->
-                            <label class="mt-3 ml-3 text-white">회원<input type = "radio" name = "people" value="memberRadio" checked></label><!--이러면 기본이 회원으로 잡힘.-->
-                            <label class="mt-3 ml-3 text-white">비회원<input type = "radio" name = "people" value="nomemberRadio"></label><br>
+                          
                         </div>
                         
 
@@ -65,23 +64,12 @@
                                 <label class="text-white col-3">아이디:</label><input type = "text" id = "idInput" class="form-control"><br>                                
                             </div>   
                             <div class="d-flex align-items-center mt-2"><!--디브 한번더 디플렉스까지-->
-                                <label class="text-white col-3">비밀번호:</label><input type = "password" id = "passwordInput" class="form-control"><br>                                
+                                <label class="text-white col-3">전화번호:</label><input type = "text" id = "phoneInput" class="form-control"><br>                                
                             </div>  
                         </div>
                         
-                             <!--비회원라디오 버튼 선택시. 이름 전화번호 날짜 -->
-                        <div class="d-none" id="nomemberInput"><!--얘네를 감싸는 디브 하나더 위에도 멤버인풋--><!--여기도 요소 하나하나 디브 먹이기.-->
-                            <div class="d-flex align-items-center mt-3"><!--여기부분이랑 라디오 조회 처리 해보기.-->
-                                <label class="text-white col-3">이름:</label><input type = "text" id = "nameInput"  class="form-control"><br>
-                            </div>   
-                            <div class="d-flex align-items-center mt-3"><!--여기부분이랑 라디오 조회 처리 해보기.-->
-                                <label class="text-white col-3">전화번호:</label><input type = "text" id = "phoneInput"  class="form-control"><br>
-                            </div> 
-                            <div class="d-flex align-items-center mt-3"><!--여기부분이랑 라디오 조회 처리 해보기.-->
-                                <label class="text-white col-3">날짜:</label><input type = "text" id = "dateInput"  name = "number" class="form-control" autocomplete="off"><br>
-                            </div> 
-                              
-                        </div>   
+                      
+          
                         
                          <div class="d-flex justify-content-end mt-3">   <!--오른쪽 배치.-->
                             <button id="searchButton" class="btn btn-success float-right">조회하기</button><!--id 부여하기-->
@@ -134,8 +122,8 @@
                         if(id == "" ){
                             alert("아이디를 입력하세요.");
                             return ;
-                        } else if (password == ""){//굳이 엘스 안써도 되나봄
-                            alert("비밀번호를 입력하세요.");
+                        } else if (phone == ""){//굳이 엘스 안써도 되나봄
+                            alert("전화번호를 입력하세요.");
                             return ;
                         } else if( id != "" && password !="") {
                             alert("정회원 조회중..")

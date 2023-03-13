@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>예약 목록 보기</title>
-		<link rel="stylesheet" href="style.css" type="text/css">
+		<link rel="stylesheet" href="/booking/style.css" type="text/css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
@@ -19,7 +19,7 @@
 </head>
 <body>
 	
-	<div class="container">
+	<div id="wrap" class="container">
 	
 		<header class ="d-flex justify-content-center align-items-center"><!--텍스트 센터를 할수도 있지만 이걸로 하자.-->
             
@@ -33,7 +33,7 @@
                     <li class="nav-item ml-5"><a href="#" class= "nav-link text-white font-weight-bold">예약안내</a></li>
                     <li class="nav-item ml-5"><a href="#" class= "nav-link text-white font-weight-bold">커뮤니티</a></li>
                 </ul>
-            </nav>
+        </nav>
             
 		<h1 class="text-center">예약 목록 보기</h1>
 		<table class="table">
@@ -50,42 +50,30 @@
 			</thead>
 			
 			<tbody>
+			
+			<c:forEach var = "booking" items="${bookList }" varStatus = "status">
 				<tr>
-					<td>김인규</td>
-					<td>2021년 6월 30일</td>
-					<td>2</td>
-					<td>4</td>
-					<td>010-1232-1111</td>
-					<td class="text-info">대기중</td>
-					<td><button class="btn btn-danger">삭제</button></td>
+					<td>${booking.name }</td>
+					<td><fmt:formDate value ="${booking.date }" pattern="yyyy년 MM월 dd일"/></td>
+					<td>${booking.day }</td>
+					<td>${booking.headcount }</td>
+					<td>${booking.phoneNumber }</td>
+					<c:choose>
+						<c:when test="${booking.state eq '대기중' }">
+							<td class="text-info">대기중</td>
+						</c:when>
+						<c:when test="${booking.state eq '확정' }">
+							<td class="text-success">확정</td>
+						</c:when>
+						<c:otherwise>
+							<td class="text-danger">취소</td>
+						</c:otherwise>
+						
+					</c:choose>
+					<td><button id = "deleteBtn" type="button"  class="btn btn-danger delete-btn" data-booking-id="${booking.id }">삭제</button></td>
 				</tr>
-				<tr>
-					<td>혜리</td>
-					<td>2025년 4월 12일</td>
-					<td>2</td>
-					<td>2</td>
-					<td>010-9999-9999</td>
-					<td class="text-info">확정</td>
-					<td><button class="btn btn-danger">삭제</button></td>
-				</tr>
-				<tr>
-					<td>김인규</td>
-					<td>2021년 6월 30일</td>
-					<td>2</td>
-					<td>4</td>
-					<td>010-1232-1111</td>
-					<td class="text-info">대기중</td>
-					<td><button class="btn btn-danger">삭제</button></td>
-				</tr>
-				<tr>
-					<td>김인규</td>
-					<td>2021년 6월 30일</td>
-					<td>2</td>
-					<td>4</td>
-					<td>010-1232-1111</td>
-					<td class="text-info">대기중</td>
-					<td><button class="btn btn-danger">삭제</button></td>
-				</tr>
+			
+			</c:forEach>
 				
 			
 			</tbody>
@@ -101,7 +89,40 @@
                     copyright 2025 allright reserved.<br>
                </div> 
             </footer>
+	<script>
+	$(document).ready(function() {
+		$(."delete-btn").on("click", function(){
+			let id = $(this).data("booking-id");
+			
+			
+			$.ajax({
+				type: "GET"
+				, url: "/ajax/booking/delete"
+				, data: {"id" : id}
+				, success: function(data){
+					
+					if(data.resut == "success"){
+						location.reload();
+					} else{
+						alert("삭제실패")
+					}
+				}
+				, error:function(){
+					alert("삭제 에러");
+				}	
+				
+				
+			});
+			
+			
+			
+		});
+		
+		
+		
+	});
 	
+	</script>
 
 </body>
 </html>

@@ -36,6 +36,15 @@ public class BookingController {
 				
 	}
 	
+	@GetMapping("/input") 
+	
+	public String inputBooking() {
+		
+		return "ajax/booking/input";
+		
+		
+	}
+	
 	@GetMapping("/main")
 	public String bookingMain(Model model) {
 
@@ -43,6 +52,7 @@ public class BookingController {
 		return "/ajax/booking/main";
 				
 	}
+
 	
 	@PostMapping("/add")//map
 	@ResponseBody
@@ -72,6 +82,7 @@ public class BookingController {
 	}
 	
 	@GetMapping("/delete")//map
+	@ResponseBody
 	public Map<String, String> deleteBooking(
 				@RequestParam("id") int id) {
 		

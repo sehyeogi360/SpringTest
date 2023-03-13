@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>예약하기</title>
 
-		<link rel="stylesheet" href="style.css" type="text/css">
+		<link rel="stylesheet" href="/booking/style.css" type="text/css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
@@ -23,10 +23,21 @@
 </head>
 <body>
 
-	<div id="wrap">
+	<div id="wrap" class="container">
 	
-	
-	
+		<h1 class="text-center">예약하기</h1>
+		
+		<label>이름</label><br>
+		<input type="text" name="name" id="nameInput" class="form-control"> 
+		<label>예약날짜</label><br>
+		<input type="text" name="date" id="dateInput" class="form-control"> 
+		<label>숙박일수</label><br>
+		<input type="text" name="day" id="dayInput" class="form-control"> 
+		<label>숙박인원</label><br>
+		<input type="text" name="headcount" id="headcountInput" class="form-control"> 
+		<label>전화번호</label><br>
+		<input type="text" name="phoneNumber" id="phoneNumberInput" class="form-control"> 
+		<button type="submit" class="btn btn-warning text-dark col-10">예약하기</button>
 	</div>
 
 
@@ -40,6 +51,9 @@
                     copyright 2025 allright reserved.<br>
                </div> 
             </footer>
-
+	<script>
+	
+	
+	</script>
 </body>
 </html>
