@@ -37,34 +37,12 @@ public class BookingController {
 	}
 	
 	
-	@GetMapping("/main") //하나의 데이터만을 조회 리스폰스바디형태의 json형태의 문자열만 만드는 과정만있다. 자바스크립트만 해결
-	@ResponseBody
-	public Map<String, String> bookingMain(@RequestParam(value = "name", required = false)  String name
-							, @RequestParam(value = "phoneNumber", required = false) String phoneNumber	
-							, @DateTimeFormat(pattern="yyyy년 MM월 dd일")
-							  @RequestParam(value ="date",  required = false) Date date
-							, @RequestParam(value = "day", required = false) Integer day
-							, @RequestParam(value = "headcount", required = false) Integer headcount
-							, @RequestParam(value = "state", required = false) String state
-							) {
-		
-		int count = bookingBO.getBooking(name, phoneNumber, date, day, headcount, state);
-		
-		 Map<String, String> resultMap = new HashMap<>();
-		 
-		 if(count == 1) {
-			 resultMap.put("result", "success");
-		 } else {
-			 resultMap.put("result", "fail");
-		 }
-		 
-		
-		
-		return resultMap;
-		
-		
-				
+	@GetMapping("/main") 
+
+	public String bookingMain() {
+		return "ajax/booking/main";
 	}
+
 	
 	
 	@GetMapping("/input") 
@@ -130,7 +108,41 @@ public class BookingController {
 		
 	}
 	
-	
+	@GetMapping("/search")//원래다른건 성공실패여부만 출력인데 조회기능 response의 json형태로 만들어야 함 
+	//하나의 데이터만을 조회 리스폰스바디형태의 json형태의 문자열만 만드는 과정만있다. 자바스크립트만 해결
+	@ResponseBody
+	public Map<String, Object> searchBooking(
+							@RequestParam("name") String name
+							, @RequestParam("phoneNumber") String phoneNumber) {
+		Booking booking = bookingBO.searchBooking(name, phoneNumber);
+		
+		// {"result":"success",  
+//		"info" : {
+//			  "id": 13,
+//			  "name": "다다음",
+//			  "headcount": 2,
+//			  "day": 2,
+//			  "date": "2023-03-14T15:00:00.000+00:00",
+//			  "phoneNumber": "02-xxxx-xxxx",
+//			  "state": "대기중",
+//			  "createdAt": "2023-03-13T08:57:23.000+00:00",
+//			  "updatedAt": "2023-03-13T08:57:23.000+00:00"
+//			}
+//	}
+		Map<String, Object> resultMap = new HashMap<>();
+//		조회 성공{"result":"success", "info":booking} -> booking객체
+//		조회 실패{"result":"fail"}
+		if(booking != null) {
+			resultMap.put("result", "success");
+			resultMap.put("info", booking);//map안에 객체가 포함되어있는 형태
+		} else {
+			resultMap.put("result", "fail");
+		}
+		
+		
+		
+		return resultMap;//리스폰스바디 맵만되는게 아니라 객체도 된다. 
+	}						//return type = 조회된 결과만  //이결과를 booking 형태로 전달한 json /search?name=다다음&phoneNumber=02-xxxx-xxxx
 	
 	
 	

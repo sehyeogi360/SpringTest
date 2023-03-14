@@ -109,61 +109,71 @@
                 $("#searchButton").on("click", function(){
                     //밸류속성 값을 가져온다.
                    
-                    let name = $("#nameInput").val();
+                    let name = $("#nameInput").val();//input값은 value로 가져온다
                     let phoneNumber = $("#phoneNumberInput").val();
                    	
                     
+                    if(name == "" ){
+                        alert("이름을 입력하세요.");
+                        return ;
+                    } 
                     
-                    // 라디오 인풋 중에 checked 속성이 있는 태그를 객체화
-                   	// let type = $("input[name='people']:checked").val();//체크드가 들어간놈만 불러올수 있다.
-                    // 회원이 선택된 상태일때는 아이디, 비밀번호
-                 
+                    if (phoneNumber == ""){
+                        alert("전화번호를 입력하세요.");
+                        return ;
+                    } 
+                    
+                    /*
+                    if( name != "" && phoneNumber != "") {
                         
-                        
-                   		
-                   		
-
+                        alert("이름 : " + name +"\n 날짜 :" + date
+                        		+"\n 일수 : " + day + "\n 인원 : " + headcount
+                        	  + "\n 상태 : " + state 	);
+                    }
+                    */
+                	//전화번호가 010으로 시작하는지 
+                	
+                	/*
+	                     if(!phoneNumber.startWith("010")){
+	                        alert("010으로 시작하게 하세요.");
+	                        return ;
+	                     }   
+	                    
+	                     if(isNaN(phoneNumber)){
+	         				alert("번호는 숫자만 입력 가능합니다.");
+	         				return ;
+	         			}
+            		*/
                
-	                    
-	                    
 	                    $.ajax({
 	                    	type: "get"
-	                    	, url:"/ajax/booking/main"
-	                    	, data:{"name":name, "date":date, "day":day, "headcount":headcount, "state" : state, "phoneNumber":phoneNumber}
-	                    	,success:function(data){
-	                    		if( name != "" && phoneNumber != "") {
-	                                
-	                                alert("이름 : " + name +"\n 날짜 :" + date
-	                                		+"\n 일수 : " + day + "\n 인원 : " + headcount
-	                                	  + "\n 상태 : " + state 	);
-	                            }
+	                    	, url:"/ajax/booking/search"
+	                    	, data:{"name":name, "phoneNumber":phoneNumber}//마찬가지로 이름, 폰번호 두개만
+	                    	, success:function(data){
+	                    		// result 가 success면 조회 결과 있다.
+	                    		// fail 이면 없다.
+	                    		if(data.result =="fail"){
+	                    			alert("조회된 결과가 없습니다.")
+	                    		} else{//조회가 안되면 널이 리턴되게 해보자
+	                    										//data안의 객체안에 name이 있단 뜻.				
+		                    		let message  =  "이름 : "  + data.info.name + "\n날짜 : " + data.info.date.substring(0, 10) //글자수 자르기
+		                    		+"\n일수 : " + data.info.day + "\n인원 : " + data.info.headcount +  "\n상태 : " + data.info.state; 
+		                    		//메시지를 변수로 준다.
+		                    		alert(message);//.headcount도 가능
+	                    		}
 	                    		
 	                    	}
 	                    	, error:function(){
-	                    		if(name == "" ){
-	                                alert("이름을 입력하세요.");
-	                                return ;
-	                            } 
-	                            else if (phoneNumber == ""){//굳이 엘스 안써도 되나봄
-	                                alert("전화번호를 입력하세요.");
-	                                return ;
-	                            } 
+	                    		alert("조회에러");
 	                    		
-	                    		//전화번호가 010으로 시작하는지 
-	   	                     if(!phoneNumber.startWith("010")){
-	   	                        alert("010으로 시작하게 하세요.");
-	   	                        return ;
-	   	                     }   
-	   	                    
-	   	                     if(isNaN(phoneNumber)){
-	   	         				alert("번호는 숫자만 입력 가능합니다.");
-	   	         				return ;
-	   	         			}
+	                    	
 	                    	}
 	                    });
 	                          
                     
                     });
+                
+                
            		 });
         
             //setInterval 가운데 이미지가 3초 마다 다른 이미지로 변경되도록 만드하세요.
@@ -200,9 +210,7 @@
 
             },3000);//3초마다
 
-        
-            
-        }); 
+
         </script>
 
 </body>

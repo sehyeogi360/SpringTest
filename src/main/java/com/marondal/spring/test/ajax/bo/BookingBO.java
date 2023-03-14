@@ -22,15 +22,7 @@ public class BookingBO {
 	}
 
 
-	public int getBooking(String name
-			, String phoneNumber
-			, Date date
-			, Integer day
-			, Integer headcount
-			, String state) {
-		// TODO Auto-generated method stub
-		return bookingDAO.selectBooking(name, phoneNumber, date, day, headcount, state);
-	}
+	
 	
 	public int addBooking(
 			String name
@@ -47,6 +39,12 @@ public class BookingBO {
 		
 		return bookingDAO.deleteBookingList(id);
 		
+	}
+	
+	public Booking searchBooking(String name //마찬가지로 리턴타입부킹
+			, String phoneNumber) {
+		// TODO Auto-generated method stub
+		return bookingDAO.selectBooking(name, phoneNumber);
 	}
 
 	
