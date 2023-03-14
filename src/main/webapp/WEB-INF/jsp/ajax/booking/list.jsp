@@ -21,7 +21,7 @@
 </head>
 <body>
 	
-	<div id="wrap" class="container">
+	<div id="wrap">
 	
 		<header class ="d-flex justify-content-center align-items-center"><!--텍스트 센터를 할수도 있지만 이걸로 하자.-->
             
@@ -29,7 +29,7 @@
                         
         </header>
         <nav class="main-menu mt-3 "><!--내비 밑에-->
-                <ul class="nav nav-fill d-flex justify-content:space-around align-items-center"><!--왼쪽에 몰림 방지 nav-fill-->
+                <ul class="nav nav-fill"><!--왼쪽에 몰림 방지 nav-fill-->
                     <li class="nav-item ml-5"><a href="#" class= "nav-link text-white font-weight-bold">펜션소개</a></li>
                     <li class="nav-item ml-5"><a href="#" class= "nav-link text-white font-weight-bold">객실보기</a></li>
                    <li class="nav-item ml-5"><a href="/ajax/booking/input" class= "nav-link text-white font-weight-bold">예약하기</a></li>
@@ -37,7 +37,9 @@
                 </ul>
         </nav>
         
-        <section class="contents">  
+        <section class="contents">
+        
+          
 		<h1 class="text-center">예약 목록 보기</h1>
 		<table class="table">
 			<thead>
@@ -87,7 +89,7 @@
 		</table>
 	
 		</section>  
-		<footer>
+		<footer class="mt-3 ml-4">
               <div class="text-secodary small mt-3 ml-3">
                     제주특별자치도 제주시 애될읍 <br>
                     사업자 등록번호 111-22-25522/농어촌민박사업자지정/ 대표:김통목<br>

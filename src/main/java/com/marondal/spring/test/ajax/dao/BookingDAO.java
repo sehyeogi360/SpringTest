@@ -16,6 +16,10 @@ public interface BookingDAO {
 	
 	public String selectBooking(@Param("name") String name
 								, @Param("phoneNumber") String phoneNumber
+								, @Param("date")Date date
+								, @Param("day") int day
+								, @Param("headcount") int headcount
+								, @Param("state") String state
 								);
 	
 	public int insertBookingList(@Param("name") String name //xml에서 사용될키워드를 넣어준다. @Param안에 name은 변수명 

@@ -24,8 +24,12 @@ public class BookingBO {
 	public String getBooking(
 			String name
 			, String phoneNumber
+			, Date date
+			, int day
+			, int headcount
+			, String state
 			) {
-		return bookingDAO.selectBooking(name, phoneNumber);
+		return bookingDAO.selectBooking(name, phoneNumber, date, day, headcount, state);
 	}
 	
 	public int addBooking(

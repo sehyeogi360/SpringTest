@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 가입화면 만들기</title>
+<title>예약 조회 기능</title>
 
 		<link rel="stylesheet" href="/css/booking/style.css" type="text/css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
@@ -30,7 +30,7 @@
              
         </header>
          <nav class="main-menu mt-3 "><!--내비 밑에-->
-                <ul class="nav nav-fill d-flex justify-content:space-around align-items-center"><!--왼쪽에 몰림 방지 nav-fill-->
+                <ul class="nav nav-fill"><!--왼쪽에 몰림 방지 nav-fill-->
                     <li class="nav-item ml-5"><a href="#" class= "nav-link text-white font-weight-bold">펜션소개</a></li>
                     <li class="nav-item ml-5"><a href="#" class= "nav-link text-white font-weight-bold">객실보기</a></li>
                     <li class="nav-item ml-5"><a href="/ajax/booking/input" class= "nav-link text-white font-weight-bold">예약하기</a></li>
@@ -61,22 +61,17 @@
 
                         <div class="" id="memberInput">
                             <div class="d-flex align-items-center mt-3"><!--디브 한번더 디플렉스까지 얼라인까지-->
-                                <label class="text-white col-3">이름:</label><input type = "text" id = "idInput" class="form-control"><br>                                
+                                <label class="text-white col-3">이름:</label><input type = "text" id = "nameInput" class="form-control"><br>                                
                             </div>   
                             <div class="d-flex align-items-center mt-2"><!--디브 한번더 디플렉스까지-->
-                                <label class="text-white col-3">전화번호:</label><input type = "text" id = "phoneInput" class="form-control"><br>                                
+                                <label class="text-white col-3">전화번호:</label><input type = "text" id = "phoneNumberInput" class="form-control"><br>                                
                             </div>  
                         </div>
-                        
-                      
-          
                         
                          <div class="d-flex justify-content-end mt-3">   <!--오른쪽 배치.-->
                             <button type ="submit" id="searchButton" class="btn btn-success float-right">조회하기</button><!--id 부여하기-->
                         </div>
-                        <!-- <div class="d-flex justify-content-end">  
-                            <button id="nosearchButton" class="btn btn-success float-right d-none" >비회원조회하기</button>
-                        </div>     -->
+                     
                     </div>
                     <div class=" booking-contact col-3 d-flex justify-content-center align-items-center">
                         <div class="contact text-white my-3 text-bold display-4"><!--display-4 변경 가운데 배치로 변경해보기 텍스트 화이트-->
@@ -116,32 +111,58 @@
                    
                     let name = $("#nameInput").val();
                     let phoneNumber = $("#phoneNumberInput").val();
-                   
+                   	
+                    
+                    
                     // 라디오 인풋 중에 checked 속성이 있는 태그를 객체화
-                    let type = $("input[name='people']:checked").val();//체크드가 들어간놈만 불러올수 있다.
+                   	// let type = $("input[name='people']:checked").val();//체크드가 들어간놈만 불러올수 있다.
                     // 회원이 선택된 상태일때는 아이디, 비밀번호
                  
                         if(name == "" ){
                             alert("이름을 입력하세요.");
                             return ;
                         } 
-                    	if (phoneNumber == ""){//굳이 엘스 안써도 되나봄
+                        else if (phoneNumber == ""){//굳이 엘스 안써도 되나봄
                             alert("전화번호를 입력하세요.");
                             return ;
                         } 
-                    	if( name != "" && phoneNumber !="") {
-                            alert("정회원 조회중..")
+                        
+                   		
+                   		if( name != "" && phoneNumber != "") {
+                           
+                            alert("이름 : " + name +"\n 날짜 :" + date
+                            		+"\n 일수 : " + day + "\n 인원 : " + headcount
+                            	  + "\n 상태 : " + state 	);
                         }
 
                
 	                    //전화번호가 010으로 시작하는지 
 	                     if(!phoneNumber.startWith("010")){
 	                        alert("010으로 시작하게 하세요.");
+	                        return ;
 	                     }   
 	                    
+	                     if(isNaN(phoneNumber)){
+	         				alert("번호는 숫자만 입력 가능합니다.");
+	         				return ;
+	         			}
 	                    
+	                    $.ajax({
+	                    	type: "get"
+	                    	, url:"/ajax/booking/main"
+	                    	, data:{"name":name, "date":date, "day":day, "headcount":headcount, "state" : state, "phoneNumber":phoneNumber}
+	                    	,success:function(data){
+	                    		if(data.result)
+	                    		
+	                    	}
+	                    	, error:function(){
+	                    		alert("조회 에러");
+	                    	}
+	                    });
+	                          
                     
                     });
+           		 });
         
             //setInterval 가운데 이미지가 3초 마다 다른 이미지로 변경되도록 만드하세요.
             let seconds = 1;

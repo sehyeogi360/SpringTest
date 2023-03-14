@@ -32,7 +32,7 @@
              
         </header>
         <nav class="main-menu mt-3 "><!--내비 밑에-->
-                <ul class="nav nav-fill d-flex justify-content:space-around align-items-center"><!--왼쪽에 몰림 방지 nav-fill-->
+                <ul class="nav nav-fill"><!--왼쪽에 몰림 방지 nav-fill-->
                     <li class="nav-item ml-5"><a href="#" class= "nav-link text-white font-weight-bold">펜션소개</a></li>
                     <li class="nav-item ml-5"><a href="#" class= "nav-link text-white font-weight-bold">객실보기</a></li>
                    <li class="nav-item ml-5"><a href="/ajax/booking/input" class= "nav-link text-white font-weight-bold">예약하기</a></li>
@@ -40,20 +40,27 @@
                 </ul>
         </nav>
         
+        <section>
+        
 		<h1 class="text-center">예약하기</h1>
-		<div class="w-50">
-		<label>이름</label><br>
-		<input type="text" name="name" id="nameInput" class="form-control"> 
-		<label>예약날짜</label><br>
-		<input type="text" name="date" id="date" class="form-control"> 
-		<label>숙박일수</label><br>
-		<input type="text" name="day" id="dayInput" class="form-control"> 
-		<label>숙박인원</label><br>
-		<input type="text" name="headcount" id="headcountInput" class="form-control"> 
-		<label>전화번호</label><br>
-		<input type="text" name="phoneNumber" id="phoneNumberInput" class="form-control"> 
-		<button type="submit" id ="addBtn" class="btn btn-warning text-dark mt-3 col-12">예약하기</button>
+		
+		  <div class="d-flex justify-content-center">
+			<div class="w-50">
+			<label>이름</label><br>
+			<input type="text" name="name" id="nameInput" class="form-control"> 
+			<label>예약날짜</label><br>
+			<input type="text" name="date" id="date" class="form-control"> 
+			<label>숙박일수</label><br>
+			<input type="text" name="day" id="dayInput" class="form-control"> 
+			<label>숙박인원</label><br>
+			<input type="text" name="headcount" id="headcountInput" class="form-control"> 
+			<label>전화번호</label><br>
+			<input type="text" name="phoneNumber" id="phoneNumberInput" class="form-control"> 
+			<button type="submit" id ="addBtn" class="btn btn-warning text-dark mt-3 col-12">예약하기</button>
+			</div>
 		</div>
+		
+		</section>
 		
 		<footer>
                <div class="text-secodary small mt-3 ml-3">
