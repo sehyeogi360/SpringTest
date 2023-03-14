@@ -118,45 +118,47 @@
                    	// let type = $("input[name='people']:checked").val();//체크드가 들어간놈만 불러올수 있다.
                     // 회원이 선택된 상태일때는 아이디, 비밀번호
                  
-                        if(name == "" ){
-                            alert("이름을 입력하세요.");
-                            return ;
-                        } 
-                        else if (phoneNumber == ""){//굳이 엘스 안써도 되나봄
-                            alert("전화번호를 입력하세요.");
-                            return ;
-                        } 
+                        
                         
                    		
-                   		if( name != "" && phoneNumber != "") {
-                           
-                            alert("이름 : " + name +"\n 날짜 :" + date
-                            		+"\n 일수 : " + day + "\n 인원 : " + headcount
-                            	  + "\n 상태 : " + state 	);
-                        }
+                   		
 
                
-	                    //전화번호가 010으로 시작하는지 
-	                     if(!phoneNumber.startWith("010")){
-	                        alert("010으로 시작하게 하세요.");
-	                        return ;
-	                     }   
 	                    
-	                     if(isNaN(phoneNumber)){
-	         				alert("번호는 숫자만 입력 가능합니다.");
-	         				return ;
-	         			}
 	                    
 	                    $.ajax({
 	                    	type: "get"
 	                    	, url:"/ajax/booking/main"
 	                    	, data:{"name":name, "date":date, "day":day, "headcount":headcount, "state" : state, "phoneNumber":phoneNumber}
 	                    	,success:function(data){
-	                    		if(data.result)
+	                    		if( name != "" && phoneNumber != "") {
+	                                
+	                                alert("이름 : " + name +"\n 날짜 :" + date
+	                                		+"\n 일수 : " + day + "\n 인원 : " + headcount
+	                                	  + "\n 상태 : " + state 	);
+	                            }
 	                    		
 	                    	}
 	                    	, error:function(){
-	                    		alert("조회 에러");
+	                    		if(name == "" ){
+	                                alert("이름을 입력하세요.");
+	                                return ;
+	                            } 
+	                            else if (phoneNumber == ""){//굳이 엘스 안써도 되나봄
+	                                alert("전화번호를 입력하세요.");
+	                                return ;
+	                            } 
+	                    		
+	                    		//전화번호가 010으로 시작하는지 
+	   	                     if(!phoneNumber.startWith("010")){
+	   	                        alert("010으로 시작하게 하세요.");
+	   	                        return ;
+	   	                     }   
+	   	                    
+	   	                     if(isNaN(phoneNumber)){
+	   	         				alert("번호는 숫자만 입력 가능합니다.");
+	   	         				return ;
+	   	         			}
 	                    	}
 	                    });
 	                          

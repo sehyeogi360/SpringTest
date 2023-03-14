@@ -21,14 +21,14 @@ public class BookingBO {
 		return bookingDAO.selectBookingList();//booking 테이블 조회한걸 리턴
 	}
 
-	public String getBooking(
-			String name
+
+	public int getBooking(String name
 			, String phoneNumber
 			, Date date
-			, int day
-			, int headcount
-			, String state
-			) {
+			, Integer day
+			, Integer headcount
+			, String state) {
+		// TODO Auto-generated method stub
 		return bookingDAO.selectBooking(name, phoneNumber, date, day, headcount, state);
 	}
 	
@@ -48,5 +48,7 @@ public class BookingBO {
 		return bookingDAO.deleteBookingList(id);
 		
 	}
+
+	
 	
 }

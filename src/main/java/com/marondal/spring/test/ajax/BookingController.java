@@ -38,7 +38,8 @@ public class BookingController {
 	
 	
 	@GetMapping("/main") //하나의 데이터만을 조회 리스폰스바디형태의 json형태의 문자열만 만드는 과정만있다. 자바스크립트만 해결
-	public String bookingMain(@RequestParam(value = "name", required = false)  String name
+	@ResponseBody
+	public Map<String, String> bookingMain(@RequestParam(value = "name", required = false)  String name
 							, @RequestParam(value = "phoneNumber", required = false) String phoneNumber	
 							, @DateTimeFormat(pattern="yyyy년 MM월 dd일")
 							  @RequestParam(value ="date",  required = false) Date date
@@ -47,8 +48,21 @@ public class BookingController {
 							, @RequestParam(value = "state", required = false) String state
 							) {
 		
+		int count = bookingBO.getBooking(name, phoneNumber, date, day, headcount, state);
 		
-		return "/ajax/booking/main";
+		 Map<String, String> resultMap = new HashMap<>();
+		 
+		 if(count == 1) {
+			 resultMap.put("result", "success");
+		 } else {
+			 resultMap.put("result", "fail");
+		 }
+		 
+		
+		
+		return resultMap;
+		
+		
 				
 	}
 	
