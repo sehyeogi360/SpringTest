@@ -27,10 +27,10 @@
 		<label>온도</label><input type="text" class="form-control col-3" name="temperature"><br>
 		
 		<button type ="submit"class="btn btn-primary">추가</button>
-	
+	</form>
 	</div>
 	
-</form>
+
 
 </body>
 </html>
